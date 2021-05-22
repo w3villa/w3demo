@@ -16,10 +16,11 @@
 
 .header {
 	padding: 5px;
-	
 	text-decoration: none;
-
 	background-color: black;
+	a, b {
+		color: white;
+	}
 }
 
 .footer {
@@ -86,7 +87,7 @@ li a:hover {
 
 }
 .nav-items{
-    background-image: url("bgimg.jpg");
+  background-image: url("bgimg.jpg");
 	background-image: linear-gradient(to right, royalblue , skyblue);
 	
 	height: 300px;
