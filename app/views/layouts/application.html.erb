@@ -6,24 +6,84 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-
-    <link rel="stylesheet" media="all" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"/>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
+    
   </head>
 
   <body>
     
     <div class="header">
-      <a href="/">Demo Blog</a>
+      <a style="color: white; text-decoration: none;margin-left: 50px;" href="/">✆ +917753936222</a>
+      <a style="color: white; text-decoration: none; margin-left: 50px;" href="/">✉ contact@w3villa.com</a>
     </div>
+  <div>
+  <div class="nav-items">
+    <nav id="navigation">
+   
+   <ul>
+    
+   <a style="filter: brightness(0) invert(1);" href=""><%= image_tag("w32.png", :size => "360x60", :crop => :fill)%></a>
+
+   <div style="margin-top: -50px;">
+  <li class="pos"><a href="#blockchain">BLOCKCHAIN</a></li>
+  <li><a href="#mobility">MOBILITY</a></li>
+   <li><a href="#portfolio">PORTFOLIO</a></li>
+   <li><a href="#services">SERVICES</a></li>
+    <li><a href="#blog">BLOG</a></li>
+    <li><a href="#company">COMPANY</a></li>
+    <li><button>ENQUIRY</button>
+      </li>
+    </div>
+  </ul>
+  <center style="font-size: 40px; margin-top: 65px; color: white;">Blog</center>
+  <br>
+  <div><center style="color: white; font-family: sans-serif; font-size: 13px;">Home > Blog</center></div>
+   </nav>
+    <div style="clear:both;"></div>
+    </div>
+  </div>
+  <br>
+  <div>
+  <a class="image" href="#python_complete_learning"><%= image_tag("sample1.png", :size => "960x560", :crop => :fill, style:'border-radius:10px;')%></a>
+  <!--for search bar-->
+  <div class="input-group">
+  <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+    aria-describedby="search-addon" />
+  <button type="button" class="btn btn-outline-primary">search</button>
+</div>
+
+ <!--for recent post -->
+ <div style="margin-left: 1300px;">
+  <br>
+  <br>
+  <br>
+  <br>
+  <table >
+    <tr>
+   <div><h3>Recent Posts</h3></div></tr>
+   
+   <tr><td><div ><a class="abcd" href="/"  >A guide to hiring <br>competent python developer</div></a></td></tr><br>
+   
+   <br><tr><td><div><a class="abcd" href="/"><br>ChateBots, the brighter future <br> for digital marketing</div></a></td></tr>
+   <tr><td><div><a class="abcd" href="/"><br>A Global Pandemic 2021 : Updates <br>and Precautions</div></a></td></div></td></tr>
+   <tr><td><div><a class="abcd" href="/"><br>W3Villa Technologies : New <br> Candidates Joining</div></a></td></div></td></tr>
+   
+
+  </table>
+  </div>
+  
+</div>
+
+  <div class="belowdiv2" >
     
     <div class="container">
       <div class="row">
         <div class="col">
-          <%= yield %>
+         <!--<%= yield %>-->
         </div>
       </div>
     </div>
+
     <div class="footer">
       Copyright 2021
     </div>
