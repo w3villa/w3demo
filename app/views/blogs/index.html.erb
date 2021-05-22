@@ -7,8 +7,9 @@
     <hr class="my-4">
     <%= link_to 'Show', blog, class: "btn btn-primary btn-lg" %>
     <%= link_to 'Edit', edit_blog_path(blog) %>
-    <%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <%= link_to 'Destroy', blog, method: :delete, data:{ confirm: 'Are you sure?' } %>
   </div>
 <% end %>
 <br>
 <%= link_to 'New Blog', new_blog_path %>
+
