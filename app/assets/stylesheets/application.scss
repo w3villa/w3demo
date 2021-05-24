@@ -14,7 +14,7 @@
  *= require_self
  */
 
-.header {
+.header-top {
 	padding: 5px;
 	text-decoration: none;
 	background-color: black;
@@ -29,41 +29,36 @@
 	text-align: center;
 	border-top: 1px solid #333;
 }
+nav{
+	height: 150px;
+  	padding-top:25px;
+   	background-image: linear-gradient(to right, royalblue , skyblue);
+}
 
-	ul {
+ul{
+	float:right;
+	margin-right:50px;
+  	list-style-type: none;
+  
+  }
+
+li{
+	display: inline-flex;
+	padding: 8px;
+	font-family: arial;
+  	
+}
+#nav-item{
+	color: white;
+  	text-decoration: none;
+  	font-weight: bolder;
+  	font-size:large;
+  	border:none;
+}
+#nav-image{
 	
-  list-style-type: none;
-  
-  padding: 25px;
-
-  overflow: hidden;
-   background-image: linear-gradient(to right, royalblue , skyblue);
-  
-
-}
-
-li {
-	display: inline;
-    
-    
-  
-
-
-}
-
-li a {
-  
-  font-family: arial;
-  font-weight: bolder;
-  color: white;
-  padding: 14px 16px;
-  text-decoration: none;
-  
-}
-
-/* Change the link color to #111 (black) on hover */
-li a:hover {
-  
+	filter :brightness(0) invert(1);
+	margin-left:10px;
 }
 
 .topbar {
@@ -86,30 +81,6 @@ li a:hover {
 	margin-left: 920px;
 
 }
-.nav-items{
-  background-image: url("bgimg.jpg");
-	background-image: linear-gradient(to right, royalblue , skyblue);
-	
-	height: 300px;
-	margin-top: -17px;
-}
-.image{
-	margin-left: 205px; 
-	border-style: 40px;
-}
-.headertext
-{
-	color: white; 
-	text-decoration: none;
-	margin-left: 50px;
-}
-.input-group{
-	margin-left: 1300px;
-	margin-top: -550px;
-}
-.belowdiv2{
-	margin-top: 300px;
-}
 
 .abcd:hover{
 	color:royalblue;
@@ -118,4 +89,24 @@ li a:hover {
 .abcd{
 	text-decoration: none;
 	color:black;
+}
+#blog-body{
+	float:left;
+	width:800px;
+	margin-bottom:20px;
+}
+.btn-new{
+	color:white;
+	font-size:18px;
+
+}
+
+.categorize{
+	display:block;
+}
+
+#category-output{
+	font-size:large;
+	border:none;
+	
 }

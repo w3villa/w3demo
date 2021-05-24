@@ -1,0 +1,25 @@
+<div class="header-top">
+       &nbsp &nbsp
+      <% if user_signed_in? %>
+        <b>Welcome <%= current_user.email %></b>,
+        <%= link_to "Log Out", destroy_user_session_path %>
+      <% else %>
+        <%= link_to "Sign In", new_user_session_path %>
+      <% end %>
+    </div>
+
+
+    
+    <nav>
+      <span id="nav-image"> <%= image_tag("w3villa.png", height:"33px", width:"180px;") %> </span>  
+        <ul>
+          <li><%= link_to "Home", root_path, id:"nav-item",class:"btn btn-outline-danger" %></li>
+          <li><%= link_to "Mobility", root_path, id:"nav-item",class:"btn btn-outline-danger" %></li>
+          <li><%= link_to "Portfolio", root_path, id:"nav-item",class:"btn btn-outline-danger" %></li>
+          <li><%= link_to "services", root_path, id:"nav-item",class:"btn btn-outline-danger" %></li>
+          <li><%= link_to "Blogs", root_path, id:"nav-item",class:"btn btn-outline-danger" %></li>
+          <li><%= link_to "Comapany", root_path, id:"nav-item",class:"btn btn-outline-danger" %></li>  
+        </ul>
+    </nav>
+
+    

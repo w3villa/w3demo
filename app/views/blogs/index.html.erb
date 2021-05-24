@@ -1,17 +1,32 @@
 <p id="notice"><%= notice %></p>
-
-<% @blogs.each do |blog| %>
-  <div class="jumbotron">
-    <h1 class="display-4"><%= blog.title %></h1>
-    <small>Created By <%= blog.user.email %></small>
-    <small> - <%= blog.created_at %></small>
-    <p class="lead"><%= blog.body %></p>
-    <hr class="my-4">
-    <%= link_to 'Show', blog, class: "btn btn-primary btn-lg" %>
-    <%= link_to 'Edit', edit_blog_path(blog) %>
-    <%= link_to 'Destroy', blog, method: :delete, data:{ confirm: 'Are you sure?' } %>
+<% if user_signed_in? %>
+<div class="row">
+  <div class="col-9">
+  <% @blogs.each do |blog| %>
+    <div id="blog-body">
+      <%= image_tag("sample1.png", height:"500px", width:"800px;") %> <br>
+      <h3><%= blog.title %></h3>
+      <%= blog.body %> <br><br>
+      <%= link_to 'Show', blog ,class:"btn btn-outline-success" %>
+      <%= link_to 'Edit', edit_blog_path(blog) ,class:"btn btn-outline-primary" %>
+      <%= link_to 'Delete', blog, method: :delete, data: { confirm: 'Are you sure?' } ,class:"btn btn-outline-danger" %>
+    </div>
+  <% end %>
+</div>
+   <br>
+<div class="col-2 ">
+    <%= link_to 'Categories', categories_path ,class:"btn btn-outline-secondary" %> <br><br>
+    <% @categories.each do |category| %>
+    <%= link_to category.category, blogs_path(:cate => category.id),id:"category-output", class:"btn btn-outline-info btn-lg" %>
+    <%= category.blogs.count, id:"category-count" %>
+    <br><br>
+    <% end %>
   </div>
+</div>
+<% if user_signed_in? %>
+    <%= link_to 'New Blog', new_blog_path, class:"btn btn-secondary" %>
+    <% end %>
 <% end %>
-<br>
-<%= link_to 'New Blog', new_blog_path %>
+
+
 

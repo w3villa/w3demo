@@ -15,8 +15,8 @@ default: &default
   collation: utf8_general_ci
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
-  password: '8888'
-  socket: /tmp/mysql.sock
+  password: '1908'
+  socket: /var/run/mysqld/mysqld.sock
 
 development:
   <<: *default
