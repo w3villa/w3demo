@@ -3,7 +3,14 @@ class BlogsController < ApplicationController
 
   # GET /blogs or /blogs.json
   def index
-    @blogs = Blog.all
+    @categories = Category.all
+    cate = params[:cate]
+    if !cate.nil?
+      @blogs = Blog.where(:category_id => cate)
+    else
+      @blogs = Blog.all
+    end
+    
   end
 
   # GET /blogs/1 or /blogs/1.json
@@ -47,7 +54,7 @@ class BlogsController < ApplicationController
     end
   end
 
-  # DELETE /blogs/1 or /blogs/1.json
+  
   def destroy
     @blog.destroy
     respond_to do |format|
@@ -55,15 +62,15 @@ class BlogsController < ApplicationController
       format.json { head :no_content }
     end
   end
-
+ 
   private
-    # Use callbacks to share common setup or constraints between actions.
+
     def set_blog
       @blog = Blog.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
+
     def blog_params
-      params.require(:blog).permit(:title, :body, :user_id)
+      params.require(:blog).permit(:title, :body, :user_id, :category_id )
     end
 end
