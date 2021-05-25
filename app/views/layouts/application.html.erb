@@ -5,6 +5,8 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+  </head>
   </head>
 
   <body>
@@ -18,64 +20,32 @@
         <%= link_to "Sign In", new_user_session_path %>
       <% end %>
     </div>
-    <div>
-      <div class="">
-        <nav id="navigation">
-          <a style="filter: brightness(0) invert(1);" href=""><%= image_tag("w32.png", :size => "360x60", :crop => :fill)%></a>
-          <ul>
-            <li class="pos"><a href="#blockchain">BLOCKCHAIN</a></li>
-            <li><a href="#mobility">MOBILITY</a></li>
-            <li><a href="#portfolio">PORTFOLIO</a></li>
-            <li><a href="#services">SERVICES</a></li>
-            <li><a href="#blog">BLOG</a></li>
-            <li><a href="#company">COMPANY</a></li>
-            <li><button>ENQUIRY</button></li>
-          </ul>
-        </nav>
-      </div>
+
+    <div class="navbar">
+     <h1> <%= link_to "Blog", root_path %></h1> 
+        
     </div>
-    <center style="font-size: 40px; margin-top: 65px; color: white;">Blog</center>
-    <br>
-    <div>
-      <center style="color: white; font-family: sans-serif; font-size: 13px;">Home > Blog</center>
+
+    <% if params[:controller] == "blogs" && params[:action] == "index"%>
+    <div class="blogsection">
+      <h1>Welcome to Blog</h1>
     </div>
-    <div style="clear:both;"></div>
-    <br>
-    <div class="clearfix">
-      <%= yield %>
-    <!--for search bar-->
+    <% end %>
 
-      <div class="input-group">
-        <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
-          aria-describedby="search-addon" />
-        <button type="button" class="btn btn-outline-primary">search</button>
-      </div>
-
-   <!--for recent post -->
-   <div style="margin-left: 1300px;">
-    <br>
-    <br>
-    <br>
-    <br>
-    <table >
-      <tr>
-     <div><h3>Recent Posts</h3></div></tr>
-     
-     <tr><td><div ><a class="abcd" href="/"  >A guide to hiring <br>competent python developer</div></a></td></tr><br>
-     
-     <br><tr><td><div><a class="abcd" href="/"><br>ChateBots, the brighter future <br> for digital marketing</div></a></td></tr>
-     <tr><td><div><a class="abcd" href="/"><br>A Global Pandemic 2021 : Updates <br>and Precautions</div></a></td></div></td></tr>
-     <tr><td><div><a class="abcd" href="/"><br>W3Villa Technologies : New <br> Candidates Joining</div></a></td></div></td></tr>
-     
-
-    </table>
+    <div class="main">
+       <%= yield %>      
     </div>
-    
-  </div>
+
+    <div class="footer">
+      <h6>Copyright@2021-  Blog Demo</h6>
+      <%= image_tag("facebook.png")  %>
+      <%= image_tag("email.png")  %>
+      <%= image_tag("linkedin.png")  %>    
+    </div>
+   
 
 
-      <div class="footer">
-        Copyright 2021
-      </div>
+
+
   </body>
 </html>

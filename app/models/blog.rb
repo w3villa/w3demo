@@ -6,5 +6,6 @@ class Blog < ApplicationRecord
 	validates :user_id, numericality: true
 
 	belongs_to :user
+	belongs_to :category
 
 end

@@ -1,17 +1,85 @@
 <p id="notice"><%= notice %></p>
 
-<% @blogs.each do |blog| %>
-  <div class="jumbotron">
-    <h1 class="display-4"><%= blog.title %></h1>
-    <small>Created By <%= blog.user.email %></small>
-    <small> - <%= blog.created_at %></small>
-    <p class="lead"><%= blog.body %></p>
-    <hr class="my-4">
-    <%= link_to 'Show', blog, class: "btn btn-primary btn-lg" %>
-    <%= link_to 'Edit', edit_blog_path(blog) %>
-    <%= link_to 'Destroy', blog, method: :delete, data:{ confirm: 'Are you sure?' } %>
+<div class="bloglist">
+    <div class="left">
+      <% @blogs.each do |blog| %>
+      <div class="blog">
+        <div class="image">
+          <%= image_tag("web.jpg", height:"200px", width:"200px;") %>           
+        </div>
+        <div class="text">
+          <h2><%= blog.title %></h2>
+          <p><%= blog.body %></p>
+          <small>Created By <%= blog.user.email %></small>
+          <small> - <%= blog.created_at %></small><br>
+          <%= link_to 'Read more', blog, class: "btn" %>
+          <%= link_to 'Edit', edit_blog_path(blog) %>
+          <%= link_to 'Destroy', blog, method: :delete, data:{ confirm: 'Are you sure?' } %>
+        </div>  
+      </div>
+      <%end %>    
+      <%= link_to 'New Blog', new_blog_path, class:"newbutton"  %> 
+    </div>
+    <div class="right">
+      <div class="searchbox">
+        <input type="text" placeholder="Search" class="form-control input">
+        <button>Search</button> 
+      </div>
+      <div class="recentpost">
+        <h6>Recent Post</h6>
+        <table>
+        <tr>
+          <td>
+            <%= image_tag("web.jpg",height:"50px;", width:"50px;") %>   
+            
+          </td>
+          <td>
+            Web development is the work involved in developing a Web site for the Internet  or an intranet
+          </td>
+          <hr>
+        </tr>
+      </table>
+    </div>
+    <div class="categories">
+      <h6>Categories</h6>
+      <hr>
+       <% @categories.each do |category| %>
+      <ul>
+        <li><%= link_to category.category, blogs_path(:cate => category.id) %>
+        <span class="badge"> <%= category.blogs.count %></span>      
+      </li>
+
+      </ul>
+      
+         
+      <% end %>     
+    </div>
   </div>
-<% end %>
-<br>
-<%= link_to 'New Blog', new_blog_path %>
+    
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
