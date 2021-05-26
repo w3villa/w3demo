@@ -12,7 +12,7 @@
 
 <h5>
    <strong>Category: </strong>
-   <%= @blog.category.category %>
+   <%= @blog.category.try(:name) %>
 </h5>
 
 <p>

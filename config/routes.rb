@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   resources :categories
   devise_for :users
-  resources :blogs
+  resources :blogs 
+  get "blogs/categories/:category_id", to: "blogs#show_category", as: :show_blogs_category
 
   root to: "blogs#index"
   # get "blogs/new", to: "blogs#new"

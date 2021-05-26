@@ -1,0 +1,12 @@
+<div class="categories">
+  <h6>Categories</h6>
+  <hr>
+   <% categories.each do |category| %>
+  <ul>
+    <li>
+      <%= link_to category.name, show_blogs_category_path(:category_id => category.id) %>
+      <span class="badge"> <%= category.blogs.count %></span>      
+    </li>
+  </ul>
+  <% end %>     
+</div>

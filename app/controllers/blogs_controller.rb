@@ -1,15 +1,16 @@
 class BlogsController < ApplicationController
   before_action :set_blog, only: %i[ show edit update destroy ]
+  before_action :fetch_all_categories, only: %i[ index show_category ]
 
   # GET /blogs or /blogs.json
-  def index
-     @categories = Category.all
-     cate = params[:cate]
-     if !cate.nil?
-      @blogs = Blog.where(:category_id => cate)
-     else
-       @blogs = Blog.all
-     end
+  def index  
+     @blogs = Blog.all
+  end
+
+
+  def show_category
+    @category = Category.where(id: params[:category_id]).first
+    @blogs = @category.blogs
   end
 
   # GET /blogs/1 or /blogs/1.json
@@ -67,6 +68,10 @@ class BlogsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_blog
       @blog = Blog.find(params[:id])
+    end
+
+    def fetch_all_categories
+      @categories = Category.all
     end
 
     # Only allow a list of trusted parameters through.

@@ -31,7 +31,7 @@
       </ul>
     </div>
 
-    <% if params[:controller] == "blogs" && params[:action] == "index"%>
+    <% if params[:controller] == "blogs" && ["index", "show_category"].include?(params[:action]) %>
     <div class="blogsection">
       <h1>Welcome to Blog</h1>
     </div>

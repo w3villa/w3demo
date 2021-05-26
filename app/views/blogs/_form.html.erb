@@ -34,7 +34,7 @@
       <%= form.label :category%>
     </div>
     <div class="formfield">
-       <%= form.select :category_id, Category.all.map {|c|[c.category, c.id]}, class: "form-control" %>
+       <%= form.select :category_id, Category.all.map {|c|[c.name, c.id]}, class: "form-control" %>
     </div>
   </div>
   <div class="form-row">
