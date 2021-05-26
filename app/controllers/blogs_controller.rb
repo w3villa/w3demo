@@ -3,7 +3,13 @@ class BlogsController < ApplicationController
 
   # GET /blogs or /blogs.json
   def index
-    @blogs = Blog.all
+     @categories = Category.all
+     cate = params[:cate]
+     if !cate.nil?
+      @blogs = Blog.where(:category_id => cate)
+     else
+       @blogs = Blog.all
+     end
   end
 
   # GET /blogs/1 or /blogs/1.json
@@ -22,6 +28,7 @@ class BlogsController < ApplicationController
   # POST /blogs or /blogs.json
   def create
     @blog = Blog.new(blog_params)
+    
 
     respond_to do |format|
       if @blog.save
@@ -64,6 +71,6 @@ class BlogsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def blog_params
-      params.require(:blog).permit(:title, :body, :user_id)
+      params.require(:blog).permit(:title, :body, :user_id, :category_id)
     end
 end
