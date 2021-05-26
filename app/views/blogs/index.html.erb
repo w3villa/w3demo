@@ -9,12 +9,14 @@
         </div>
         <div class="text">
           <h2><%= blog.title %></h2>
-          <p><%= blog.body %></p>
-          <small>Created By <%= blog.user.email %></small>
+          <p><%= blog.body.truncate(200) %></p>
+          <small><strong>Category :</strong><%= blog.category.category %></small><br>
+            
+          <small><strong>Created By-</strong> <%= blog.user.email %></small>
           <small> - <%= blog.created_at %></small><br>
           <%= link_to 'Read more', blog, class: "btn" %>
-          <%= link_to 'Edit', edit_blog_path(blog) %>
-          <%= link_to 'Destroy', blog, method: :delete, data:{ confirm: 'Are you sure?' } %>
+          <span><%= link_to 'Edit', edit_blog_path(blog) %></span>
+          <span><%= link_to 'Destroy', blog, method: :delete, data:{ confirm: 'Are you sure?' } %></span>
         </div>  
       </div>
       <%end %>    
@@ -29,17 +31,17 @@
         <h6>Recent Post</h6>
         <table>
         <tr>
-          <td>
+          <td >
             <%= image_tag("web.jpg",height:"50px;", width:"50px;") %>   
             
           </td>
           <td>
-            Web development is the work involved in developing a Web site for the Internet  or an intranet
+            Web development is the work involved in developing a Web site for the Internet 
           </td>
           <hr>
         </tr>
       </table>
-    </div>
+      </div>
     <div class="categories">
       <h6>Categories</h6>
       <hr>

@@ -11,13 +11,14 @@
         <div class="card-body">
           <h3><%= category.category %></h3>
           <br>
-         <%= link_to 'Show', category ,class: "btn btn-primary" %>
-         <%= link_to 'Edit', edit_category_path(category),class: "btn btn-primary"   %>
-         <%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary"  %>          
+         <%= link_to 'Show', category ,class: "btn btn-outline-primary" %>
+         <%= link_to 'Edit', edit_category_path(category),class: "btn btn-outline-secondary"   %>
+         <%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-danger"  %>          
         </div>        
-      </div>
+      </div><hr>
     </div>
-    <% end %>    
+    <% end %>  
+
   </div>  
 </div>
 <br>

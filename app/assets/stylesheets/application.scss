@@ -27,6 +27,7 @@
   
   background-color:#253055;
   padding:1rem;
+
   a{
     color: white;
   }
@@ -34,11 +35,8 @@
     color:#fff;
     margin-left:2rem;
   }
-  ul{
-    list-style:none;
-    display:flex;
-    color:white;
-  }
+
+
 }
 
 .main{
@@ -108,7 +106,7 @@
  	  border: 1px solid #656c84;
     border-radius: 5px;
     display: flex;
- 	  box-shadow: 2px 2px 10px 2px #34495e;
+ 	  box-shadow: 2px 2px 8px 2px #34495e;
     
  	}
   
@@ -141,6 +139,12 @@
      
     }
   }
+  small{
+    color:#253055;
+  }
+  span{
+   margin:5px;
+  }
   .btn{
     float: right;
     padding: 0.5rem 1rem ;
@@ -169,7 +173,7 @@
   .right{
     width: 25%;
     margin: .3rem;
-    padding-top: .1rem;
+    padding-top: 1rem;
     @media(max-width:798px){
        display:flex;
        margin: 0.3rem;
@@ -181,9 +185,10 @@
   .searchbox{
     padding: 1rem 1rem;
     border-radius: 5px;
+    margin-top:8px;
     background-color: #fff;
     border: 1px solid #656c84;
-    box-shadow: 2px 2px 15px 2px grey;
+    box-shadow: 2px 2px 8px 2px grey;
     @media(max-width:798px){
        display:none;
 
@@ -210,14 +215,28 @@
     padding: 15px 0px 16px ;
     border-radius: 5px;
     border: 1px solid #656c84;
-    box-shadow: 2px 2px 10px 2px grey;
+    box-shadow: 2px 2px 8px 2px grey;
     @media(max-width:798px){
       width:50%;
       margin:10px;
+    }
 
+    table{
+      margin:2px;
+    }
+    td{
+      padding: 5px;
     }
 
 
+  }
+
+
+
+  h6{
+   margin-left:20px;
+   font-weight:bold;
+   color:#253055;
   }
   .categories{
     margin-top: 30px;

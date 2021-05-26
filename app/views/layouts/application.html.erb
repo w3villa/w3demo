@@ -12,7 +12,7 @@
   <body>
     
     <div class="header">
-      <%= link_to "Home", root_path %>
+
       <% if user_signed_in? %>
         <b>Welcome <%= current_user.email %></b>,
         <%= link_to "Log Out", destroy_user_session_path %>
@@ -22,8 +22,13 @@
     </div>
 
     <div class="navbar">
-     <h1> <%= link_to "Blog", root_path %></h1> 
-        
+      <h1> <%= link_to "Blog", root_path %></h1> 
+      <ul class="nav justify-content-end">
+        <li class="nav-item">
+          <%= link_to "New Category",  new_category_path %></h1> 
+        </li>
+       
+      </ul>
     </div>
 
     <% if params[:controller] == "blogs" && params[:action] == "index"%>
