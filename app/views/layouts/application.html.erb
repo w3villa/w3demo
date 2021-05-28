@@ -6,35 +6,33 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
   </head>
 
   <body>
-    
     <div class="header">
-
       <% if user_signed_in? %>
         <b>Welcome <%= current_user.email %></b>,
-        <%= link_to "Log Out", destroy_user_session_path %>
-      <% else %>
-        <%= link_to "Sign In", new_user_session_path %>
+          <%= link_to "Log Out", destroy_user_session_path %>
+            <% else %>
+          <%= link_to "Sign In", new_user_session_path %>
       <% end %>
     </div>
 
     <div class="navbar">
       <h1> <%= link_to "Blog", root_path %></h1> 
-      <ul class="nav justify-content-end">
-        <li class="nav-item">
-          <%= link_to "New Category",  new_category_path %></h1> 
-        </li>
-       
-      </ul>
-    </div>
+        <ul class="nav justify-content-end">
+          <li class="nav-item">
+           <%= link_to "New Category",  new_category_path %></h1> 
+          </li>
+        </ul>
+      </div>
 
     <% if params[:controller] == "blogs" && ["index", "show_category"].include?(params[:action]) %>
-    <div class="blogsection">
-      <h1>Welcome to Blog</h1>
-    </div>
+      <div class="blogsection">
+        <h1>Welcome to Blog</h1>
+      </div>
     <% end %>
 
     <div class="main">
@@ -42,15 +40,10 @@
     </div>
 
     <div class="footer">
-      <h6>Copyright@2021-  Blog Demo</h6>
+      <h6>Copyright@2021- Blog Demo</h6>
       <%= image_tag("facebook.png")  %>
       <%= image_tag("email.png")  %>
       <%= image_tag("linkedin.png")  %>    
     </div>
-   
-
-
-
-
   </body>
 </html>

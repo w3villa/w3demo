@@ -1,27 +1,17 @@
 <p id="notice"><%= notice %></p>
 <div class="showblog">
-
-<h2>
-  <%= @blog.title %>
-</h2>
-<hr>
-<%= image_tag("web.jpg") %>
-
-
-
-
-<h5>
-   <strong>Category: </strong>
-   <%= @blog.category.try(:name) %>
-</h5>
-
-<p>
-  
-  <%= @blog.body %>
-</p>
-
-<%= link_to 'Edit', edit_blog_path(@blog) %> |
-<%= link_to 'Back', blogs_path %>
-
-	
+  <h2>
+    <%= @blog.title %>
+  </h2>
+    <hr>
+      <%= image_tag("web.jpg") %>
+      <h5> <strong>Category: </strong>
+        <%= @blog.category.try(:name) %>
+      </h5>
+      <h5> <strong>Tag: </strong>
+        <%= @blog.tags.try(:name) %>
+      </h5>
+        <p><%= @blog.body %></p>
+          <%= link_to 'Edit', edit_blog_path(@blog) %> |
+          <%= link_to 'Back', blogs_path %>
 </div>

@@ -2,7 +2,6 @@
   <% if blog.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(blog.errors.count, "error") %> prohibited this blog from being saved:</h2>
-
       <ul>
         <% blog.errors.full_messages.each do |message| %>
           <li><%= message %></li>
@@ -10,7 +9,6 @@
       </ul>
     </div>
   <% end %>
-
   <div class="form-row">
     <div class="formlable">
       <%= form.label :title,class:"form-label" %>
@@ -19,7 +17,6 @@
        <%= form.text_field :title , class: "form-control" %>
     </div>
   </div>
-
   <div class="form-row">
     <div class="formlable">
       <%= form.label :body, class:"form-label"  %>
@@ -28,13 +25,19 @@
        <%= form.text_area :body, class: "form-control" %>
     </div>
   </div>
-
   <div class="form-row">
     <div class="formlable">
       <%= form.label :category%>
     </div>
     <div class="formfield">
        <%= form.select :category_id, Category.all.map {|c|[c.name, c.id]}, class: "form-control" %>
+    </div>
+  </div> <div class="form-row">
+    <div class="formlable">
+      <%= form.label :tag%>
+    </div>
+    <div class="formfield">
+        <%= form.text_field :all_tags, placeholder: "Tags separated with comma" %>
     </div>
   </div>
   <div class="form-row">
@@ -44,10 +47,7 @@
     <div class="formfield">
        <%= form.number_field :user_id, class: "form-control"%>
     </div>
-  </div>
-
-   
-  
+  </div>  
   <div class="action">
     <%= form.submit  class: "btn-submit" %>
   </div>
