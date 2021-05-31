@@ -12,7 +12,10 @@
                 <div class="card-body">
                   <h4 class="heading"><%= blog.title %></h4>
                   <p><%= blog.body.truncate(100) %></p>
-                  <small><strong><i class="fa fa-tag icon"> </i></strong><%= blog.category.try(:name) %></small><br>
+                  <small><strong><i class="fa fa-tag icon"> </i></strong>
+                    <%= blog.tags.map(&:name).join(', ') %>
+                    
+                  </small><br>
                   <small><i class="fa fa-user icon"></i><%= blog.user.email %></small>
                   <small><span></span> &nbsp;</span>
                     <i class="fa fa-clock-o ">-</i> <%= blog.created_at %>
@@ -48,5 +51,6 @@
         </table>
     </div>
     <%= render partial: "categories", locals: {categories: @categories} %>
+    <%= render partial: "tag", locals: {tag: @tag} %>
   </div>
 </div>

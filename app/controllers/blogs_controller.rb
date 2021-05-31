@@ -3,14 +3,21 @@ class BlogsController < ApplicationController
   before_action :fetch_all_categories, only: %i[ index show_category ]
 
   # GET /blogs or /blogs.json
-  def index  
-     @blogs = Blog.all
+  def index
+    @blogs = Blog.all
+    @tags = Tag.all
+    params[:tag] ? @blogs = Blog.tagged_with(params[:tag]) : @Blogs = Blog.all
   end
 
 
   def show_category
     @category = Category.where(id: params[:category_id]).first
     @blogs = @category.blogs
+  end
+
+  def show_tag
+    @tag =  Tag.find(params[:id])
+    @tags_blogs = @tag.blogs
   end
 
   # GET /blogs/1 or /blogs/1.json
@@ -76,6 +83,6 @@ class BlogsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def blog_params
-      params.require(:blog).permit(:title, :body, :user_id, :category_id)
+      params.require(:blog).permit(:title, :body, :user_id, :category_id, :tag_list,:tag_id)
     end
 end

@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<div class="bloglist">
+  <div class="left">
+    <% @tags_blogs.each do |blog| %>
+      <div class="blog">
+        <div class="image">
+          <%= image_tag("web.jpg", height:"200px", width:"200px;") %>           
+        </div>
+        <div class="text">
+          <h2><%= blog.title %></h2>
+          <p><%= blog.body.truncate(200) %></p>
+          <small><strong>Category :</strong><%= blog.category.try(:name) %></small><br>
+            
+          <small><strong>Created By-</strong> <%= blog.user.email %></small>
+          <small> - <%= blog.created_at %></small><br>
+          <%= link_to 'Read more', blog, class: "btn" %>
+          <span><%= link_to 'Edit', edit_blog_path(blog) %></span>
+          <span><%= link_to 'Destroy', blog, method: :delete, data:{ confirm: 'Are you sure?' } %></span>
+        </div>  
+      </div>
+    <% end %>    
+    <%= link_to 'New Blog', new_blog_path, class:"newbutton"  %> 
+  </div>
+  <div class="right">
+    <div class="searchbox">
+      <input type="text" placeholder="Search" class="form-control input">
+      <button>Search</button> 
+    </div>
+</div>
