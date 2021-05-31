@@ -13,8 +13,8 @@
                   <h4 class="heading"><%= blog.title %></h4>
                   <p><%= blog.body.truncate(100) %></p>
                   <small><strong><i class="fa fa-tag icon"> </i></strong>
-                    <%= blog.tags.map(&:name).join(', ') %>
-                    
+                    <%= blog.tag_list%>
+
                   </small><br>
                   <small><i class="fa fa-user icon"></i><%= blog.user.email %></small>
                   <small><span></span> &nbsp;</span>
@@ -51,6 +51,6 @@
         </table>
     </div>
     <%= render partial: "categories", locals: {categories: @categories} %>
-    <%= render partial: "tag", locals: {tag: @tag} %>
+    <%= render partial: "tag", locals: {tags: @tags} %>
   </div>
 </div>

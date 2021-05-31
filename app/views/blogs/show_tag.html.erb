@@ -1,25 +1,34 @@
 <p id="notice"><%= notice %></p>
-
 <div class="bloglist">
   <div class="left">
-    <% @tags_blogs.each do |blog| %>
-      <div class="blog">
-        <div class="image">
-          <%= image_tag("web.jpg", height:"200px", width:"200px;") %>           
+    <div class="row">
+      <% @blogs_tags.each do |blog| %>
+        <div class="col-md-6">
+          <div class="card">
+            <div>
+              <%= image_tag("web.jpg", height:"100%", width:"100%;") %>   
+            </div>
+              <span><i><%= blog.category.try(:name) %></i></span>
+                <div class="card-body">
+                  <h4 class="heading"><%= blog.title %></h4>
+                  <p><%= blog.body.truncate(100) %></p>
+                  <small><strong><i class="fa fa-tag icon"> </i></strong>
+                    <%= blog.tag_list%>
+
+                  </small><br>
+                  <small><i class="fa fa-user icon"></i><%= blog.user.email %></small>
+                  <small><span></span> &nbsp;</span>
+                    <i class="fa fa-clock-o ">-</i> <%= blog.created_at %>
+                  </small><br>
+                  <hr>
+                  <%= link_to 'Read more >>', blog, class: "btn" %>
+                  <span><%= link_to 'Edit', edit_blog_path(blog) %></span>
+                  <span><%= link_to 'Destroy', blog, method: :delete, data:{ confirm: 'Are you sure?' } %></span>
+                </div>
+          </div><br>
         </div>
-        <div class="text">
-          <h2><%= blog.title %></h2>
-          <p><%= blog.body.truncate(200) %></p>
-          <small><strong>Category :</strong><%= blog.category.try(:name) %></small><br>
-            
-          <small><strong>Created By-</strong> <%= blog.user.email %></small>
-          <small> - <%= blog.created_at %></small><br>
-          <%= link_to 'Read more', blog, class: "btn" %>
-          <span><%= link_to 'Edit', edit_blog_path(blog) %></span>
-          <span><%= link_to 'Destroy', blog, method: :delete, data:{ confirm: 'Are you sure?' } %></span>
-        </div>  
-      </div>
-    <% end %>    
+      <% end %>
+    </div>
     <%= link_to 'New Blog', new_blog_path, class:"newbutton"  %> 
   </div>
   <div class="right">
@@ -27,4 +36,20 @@
       <input type="text" placeholder="Search" class="form-control input">
       <button>Search</button> 
     </div>
+    <div class="recentpost">
+      <h6>Recent Post</h6>
+        <table>
+          <tr>
+            <td >
+              <%= image_tag("web.jpg",height:"50px;", width:"50px;") %>   
+            </td>
+            <td>
+            Web development is the work involved in developing a Web site for the Internet 
+            </td>
+          <hr>
+          </tr>
+        </table>
+    </div>
+    <%= render partial: "tag", locals: {tags: @tags} %>
+  </div>
 </div>

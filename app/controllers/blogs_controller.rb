@@ -1,12 +1,11 @@
 class BlogsController < ApplicationController
   before_action :set_blog, only: %i[ show edit update destroy ]
   before_action :fetch_all_categories, only: %i[ index show_category ]
+  before_action :fetch_all_tags, only: %i[ index show_tag ]
 
   # GET /blogs or /blogs.json
   def index
     @blogs = Blog.all
-    @tags = Tag.all
-    params[:tag] ? @blogs = Blog.tagged_with(params[:tag]) : @Blogs = Blog.all
   end
 
 
@@ -17,7 +16,7 @@ class BlogsController < ApplicationController
 
   def show_tag
     @tag =  Tag.find(params[:id])
-    @tags_blogs = @tag.blogs
+    @blogs_tags = @tag.blogs
   end
 
   # GET /blogs/1 or /blogs/1.json
@@ -79,6 +78,10 @@ class BlogsController < ApplicationController
 
     def fetch_all_categories
       @categories = Category.all
+    end
+
+    def fetch_all_tags
+      @tags = Tag.all
     end
 
     # Only allow a list of trusted parameters through.

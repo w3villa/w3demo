@@ -5,7 +5,7 @@
   <ul>
     <li>
       <%= link_to tag.name, blogs_tags_path(:id => tag.id) %> 
-    
+      <span class="badge"> <%= tag.blogs.count %></span>    
     </li>
   </ul>
   <% end %>     

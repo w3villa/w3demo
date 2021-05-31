@@ -11,9 +11,6 @@ class Blog < ApplicationRecord
 	has_many :blog_tags 
 	has_many :tags, through: :blog_tags
 
-	def self.tagged_with(name)
-    Tag.find_by!(name: name).posts
-  end
 
   def self.tag_counts
     Tag.select('tags.*, count(taggings.tag_id) as count').joins(:taggings).group('taggings.tag_id')
