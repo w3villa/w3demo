@@ -19,6 +19,14 @@
   </div>
   <div class="form-row">
     <div class="formlable">
+      <%= form.label :image %>
+    </div>
+    <div >
+       <%= form.file_field :image %>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="formlable">
       <%= form.label :body, class:"form-label"  %>
     </div>
     <div class="formfield">
