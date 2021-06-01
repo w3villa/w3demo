@@ -1,9 +1,12 @@
 class Blog < ApplicationRecord
+   extend FriendlyId
+  friendly_id :title, use: :slugged
 
 	# validates :title, presence: true
   validates :title, length: { minimum: 1 }
 	validates :body, presence: true
 	validates :user_id, numericality: true
+  validates :image, presence: true
 
 	belongs_to :user
 	belongs_to :category
