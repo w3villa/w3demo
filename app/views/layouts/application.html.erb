@@ -9,8 +9,6 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
-  </head>
-
   <body>
     <div class="header">
       <% if user_signed_in? %>
@@ -27,15 +25,17 @@
           <li class="nav-item">
            <%= link_to "New Category",  new_category_path %></h1> 
           </li>
+           <li class="nav-item">
+           <%= link_to "New Tag",  new_tag_path %></h1> 
+          </li>
+           <li class="nav-item">
+           <%= link_to "All Category",  categories_path %></h1> 
+          </li>
+           <li class="nav-item">
+           <%= link_to "All Tags",  tags_path %></h1> 
+          </li>
         </ul>
-      </div>
-
-    <% if params[:controller] == "blogs" && ["index", "show_category"].include?(params[:action]) %>
-      <div class="blogsection">
-        <h1>Welcome to Blog</h1>
-      </div>
-    <% end %>
-
+    </div>
     <div class="main">
        <%= yield %>      
     </div>

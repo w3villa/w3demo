@@ -9,6 +9,7 @@ class Blog < ApplicationRecord
   validates :image, presence: true
   validates :tag_list, presence: true
 
+
 	belongs_to :user
 	belongs_to :category
 

@@ -8,7 +8,8 @@
             <div>
               <%= image_tag(blog.image , style: "height:100%; width:100%;") if blog.image.present?  %> 
             </div>
-              <span><i><%= blog.category.try(:name) %></i></span>
+              <span><i class="fa fa-list-alt icon" aria-hidden="true"></i>
+                <%= blog.category.try(:name) %></span>
                 <div class="card-body">
                   <h4 class="heading"><%= blog.title %></h4>
                   <p><%= truncate(strip_tags(blog.rich_text_body.to_s), length: 150) %></p>
