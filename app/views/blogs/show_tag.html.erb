@@ -2,16 +2,18 @@
 <div class="bloglist">
   <div class="left">
     <div class="row">
-      <% @blogs.each do |blog| %>
+      <% @blogs_tags.each do |blog| %>
         <div class="col-md-6">
           <div class="card">
             <div>
-               <%= image_tag(blog.image , style: "height:100%; width:100%;") if blog.image.present?  %>    
+              <%= image_tag(blog.image , style: "height:100%; width:100%;") if blog.image.present?  %> 
             </div>
               <span><i><%= blog.category.try(:name) %></i></span>
                 <div class="card-body">
                   <h4 class="heading"><%= blog.title %></h4>
-                  <p><%= truncate(strip_tags(blog.rich_text_body.to_s), length: 150) %></p>
+                  <p>
+                    <%= truncate(strip_tags(blog.rich_text_body.to_s), length: 150)%>
+                  </p>
                   <small><strong><i class="fa fa-tag icon"> </i></strong>
                     <%= blog.tag_list%>
 
@@ -50,6 +52,6 @@
           </tr>
         </table>
     </div>
-     <%= render partial: "categories", locals: {categories: @categories} %>
+    <%= render partial: "tag", locals: {tags: @tags} %>
   </div>
 </div>

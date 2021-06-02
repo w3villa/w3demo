@@ -1,0 +1,12 @@
+<div class="categories">
+  <h6>Tags</h6>
+  <hr>
+   <% tags.each do |tag| %>
+  <ul>
+    <li>
+      <%= link_to tag.name, blogs_tags_path(:id => tag.id) %> 
+      <span class="badge"> <%= tag.blogs.count %></span>    
+    </li>
+  </ul>
+  <% end %>     
+</div>
