@@ -7,6 +7,7 @@ class Blog < ApplicationRecord
 	validates :body, presence: true
 	validates :user_id, numericality: true
   validates :image, presence: true
+  validates :tag_list, presence: true
 
 	belongs_to :user
 	belongs_to :category
@@ -14,6 +15,7 @@ class Blog < ApplicationRecord
 	has_many :blog_tags 
 	has_many :tags, through: :blog_tags
   has_one_attached :image
+  has_rich_text :body
 
 
   def self.tag_counts

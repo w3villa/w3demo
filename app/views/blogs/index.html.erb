@@ -11,7 +11,7 @@
               <span><i><%= blog.category.try(:name) %></i></span>
                 <div class="card-body">
                   <h4 class="heading"><%= blog.title %></h4>
-                  <p><%= blog.body.truncate(100) %></p>
+                  <p><%= truncate(strip_tags(blog.rich_text_body.to_s), length: 150) %></p>
                   <small><strong><i class="fa fa-tag icon"> </i></strong>
                     <%= blog.tag_list%>
 
