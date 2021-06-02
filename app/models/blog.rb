@@ -19,6 +19,8 @@ class Blog < ApplicationRecord
   has_rich_text :body
 
 
+
+
   def self.tag_counts
     Tag.select('tags.*, count(taggings.tag_id) as count').joins(:taggings).group('taggings.tag_id')
   end

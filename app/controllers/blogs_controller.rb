@@ -1,7 +1,7 @@
 class BlogsController < ApplicationController
   before_action :set_blog, only: %i[ show edit update destroy ]
   before_action :fetch_all_categories, only: %i[ index show_category ]
-  before_action :fetch_all_tags, only: %i[ index  ]
+  before_action :fetch_all_tags, only: %i[ index show_tag  ]
 
   # GET /blogs or /blogs.json
   def index
