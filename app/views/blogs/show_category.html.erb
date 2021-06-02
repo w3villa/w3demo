@@ -6,7 +6,7 @@
         <div class="col-md-6">
           <div class="card">
             <div>
-              <%= image_tag("web.jpg", height:"100%", width:"100%;") %>   
+               <%= image_tag(blog.image , style: "height:100%; width:100%;") if blog.image.present?  %>    
             </div>
               <span><i><%= blog.category.try(:name) %></i></span>
                 <div class="card-body">
