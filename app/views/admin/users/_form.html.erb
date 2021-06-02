@@ -1,0 +1,46 @@
+<%= form_with(model: [:admin, user], local: true) do |form| %>
+  <% if user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+        <% user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="col-md-8">
+    <%= form.label :email %>
+    <input type="text" value="<%= @user.email %>" name="user[email]" id="user_email">
+  </div>
+
+  <div class="col-md-8">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="col-md-8">
+    <%= form.label :role %>
+    <%= form.text_field :role %>
+  </div>
+  <br>
+  <br><br>
+
+  <% @user.hobbies.each_with_index do |hobby, i| %> 
+    <div>
+      <input type="hidden" value="<%= hobby.id %>" name="user[hobbies_attributes][<%= i %>][id]">
+      <label>Hobby#<%= i + 1%>: <input type="text" value="<%= hobby.name %>" name="user[hobbies_attributes][<%= i %>][name]"></label>
+      <input type="hidden" value="false" name="user[hobbies_attributes][<%= i %>][_destroy]">
+      <input type="checkbox" value="true" name="user[hobbies_attributes][<%= i %>][_destroy]">
+    </div>
+  <% end %>
+
+  <label>New Hobby: <input type="text" value="" name="user[hobbies_attributes][<%= @user.hobbies.count %>][name]"></label>
+
+
+  <div class="action">
+    <%= form.submit  class: "btn-submit" %>
+  </div>
+<% end %>

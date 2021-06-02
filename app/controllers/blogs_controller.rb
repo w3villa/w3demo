@@ -10,7 +10,7 @@ class BlogsController < ApplicationController
 
 
   def show_category
-    @category = Category.where(id: params[:category_id]).first
+    @category = Category.where(slug: params[:category_slug]).first
     @blogs = @category.blogs
   end
 
