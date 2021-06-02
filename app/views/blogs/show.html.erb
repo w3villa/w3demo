@@ -9,7 +9,7 @@
         <%= @blog.category.try(:name) %>
       </h5>
       <h5> <strong>Tag: </strong>
-        <%= @blog.tags.try(:name) %>
+        <%= @blog.tag_list %>
       </h5>
         <p><%= @blog.body %></p>
           <%= link_to 'Edit', edit_blog_path(@blog) %> |
