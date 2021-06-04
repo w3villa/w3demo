@@ -1,21 +1,21 @@
 <p id="notice"><%= notice %></p>
-<div class="showblog">
-  <h2>
-    <%= @blog.title %>
-  </h2>
-    <hr>
-      <%= image_tag(@blog.image , style: "height:100%; width:100%;") if @blog.image.present?  %>
-      <h5> <strong>Category: </strong>
-        <%= @blog.category.try(:name) %>
-      </h5>
-      <h5> <strong>Tag: </strong>
-        <%= @blog.tag_list%>
-      </h5>
-        <p><%= @blog.body %></p>
-           <% if ((user_signed_in? && current_user == @blog.user) or (user_signed_in? &&current_user.role== "ADMIN"))   %>
-            <span><%= link_to 'Edit', edit_blog_path(@blog) %></span>
-            <span><%= link_to 'Destroy', @blog, method: :delete, data:{ confirm: 'Are you sure?' } %></span>
-          <% end %>
-          
- </div>
+
+
+<div class="container" id="show-blog">
+  <h2><%= @blog.title %></h2>
+
+  <div class="image-container">
+   <%= image_tag(@blog.image, class: "img-fluid") %>
+  <div> 
+  <div class="content">
+      <small>Category:<%= @blog.category.try(:name) %></small><br>
+      <small> BY:<%= @blog.user.email %></small><br>
+      <small>Tags:<%= @blog.tag_list%></small>
+       
+      <p><%= @blog.body %></p>
+      <%= link_to 'Edit', edit_blog_path(@blog) %> |
+      <%= link_to 'Back', blogs_path %>
+  </div>
+</div>
+
 
