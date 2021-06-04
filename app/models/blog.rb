@@ -17,7 +17,7 @@ class Blog < ApplicationRecord
 	has_many :tags, through: :blog_tags
   has_one_attached :image
   has_rich_text :body
-
+   accepts_nested_attributes_for :tags,allow_destroy: true
 
 
 

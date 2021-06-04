@@ -32,7 +32,7 @@
     <div class="formfield">
        <%= form.rich_text_area :body %>
     </div>
-  </div>
+  </div> <br>
   <div class="form-row">
     <div class="formlable">
       <%= form.label :category%>
@@ -40,14 +40,20 @@
     <div class="formfield">
        <%= form.select :category_id, Category.all.map {|c|[c.name, c.id]}, class: "form-control" %>
     </div>
-  </div> <div class="form-row">
-    <div class="formlable">
-      <%= form.label :tag_list%>
+  </div> 
+
+
+  <% @blog.tags.each_with_index do |tag, i| %> 
+    <div>
+      <input type="hidden" value="<%= tag.id %>" name="blog[tags_attributes][<%= i %>][id]">
+      <label>Tag#<%= i + 1%>: <input type="text" value="<%= tag.name %>" name="user[tags_attributes][<%= i %>][name]"></label>
+      <input type="hidden" value="false" name="blog[tags_attributes][<%= i %>][_destroy]">
+      <input type="checkbox" value="true" name="blog[tags_attributes][<%= i %>][_destroy]">
     </div>
-    <div class="formfield">
-      <%= form.text_field :tag_list %>
-    </div>
-  </div>
+  <% end %>
+
+  <label>New tag: <input type="text" value="" name="blog[tags_attributes][<%= @blog.tags.count %>][name]"></label>
+
   <div class="form-row">
     <div class="formlable">
          <%= form.label :user_id  %>

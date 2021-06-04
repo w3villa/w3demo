@@ -4,7 +4,7 @@
     <%= @blog.title %>
   </h2>
     <hr>
-      <%= image_tag(@blog.image , style: "height:100%; width:100%;") if @blog.image.present?  %>
+      <%= image_tag(@blog.image , style: "height:250px; width:250px;") if @blog.image.present?  %>
       <h5> <strong>Category: </strong>
         <%= @blog.category.try(:name) %>
       </h5>
@@ -12,7 +12,9 @@
         <%= @blog.tag_list%>
       </h5>
         <p><%= @blog.body %></p>
-          <%= link_to 'Edit', edit_blog_path(@blog) %> |
+          <% if ((user_signed_in? && current_user == @blog.user) or (user_signed_in? &&current_user.role== "Admin") )   %>
+           <%= link_to 'Edit', edit_blog_path(@blog) %> 
+         <% end %>
           <%= link_to 'Back', blogs_path %>
  </div>
 

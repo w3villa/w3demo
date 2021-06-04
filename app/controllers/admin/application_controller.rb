@@ -6,7 +6,7 @@ class Admin::ApplicationController < ApplicationController
 	private
 
 		def authorize_user
-			if current_user.role != "ADMIN"
+			if current_user.role != "Admin"
 				redirect_to root_path, notice: "You are not authorized to access this panel"
 			end
 		end

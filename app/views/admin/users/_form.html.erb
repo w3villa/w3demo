@@ -10,21 +10,26 @@
       </ul>
     </div>
   <% end %>
+<table class="table">
+  <tr>
+    <div class="col-md-8">
+      <td><%= form.label :email %></td>
+      <td><input type="text" value="<%= @user.email %>" name="user[email]" id="user_email"></td>
+    </div>
+  </tr>
+  <tr>
+    <div class="col-md-8">
+      <td><%= form.label :name %></td>
+      <td><%= form.text_field :name %></td>
+    </div>
+  </tr>
 
-  <div class="col-md-8">
-    <%= form.label :email %>
-    <input type="text" value="<%= @user.email %>" name="user[email]" id="user_email">
-  </div>
-
-  <div class="col-md-8">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div class="col-md-8">
-    <%= form.label :role %>
-    <%= form.text_field :role %>
-  </div>
+  <tr>
+    <div class="col-md-8">
+      <td><%= form.label :role %></td>
+      <td><%= form.text_field :role %></td>
+    </div>
+  </tr>
   <br>
   <br><br>
 
@@ -36,11 +41,14 @@
       <input type="checkbox" value="true" name="user[hobbies_attributes][<%= i %>][_destroy]">
     </div>
   <% end %>
-
-  <label>New Hobby: <input type="text" value="" name="user[hobbies_attributes][<%= @user.hobbies.count %>][name]"></label>
-
-
+  <tr>
+    <td><label>New Hobby:</td> 
+      <td><input type="text" value="" name="user[hobbies_attributes][<%= @user.hobbies.count %>][name]"></td> </label>
+  </tr>
+<tr>
   <div class="action">
-    <%= form.submit  class: "btn-submit" %>
+    <td><%= form.submit  class: "btn-submit" %></td>
   </div>
+</tr>
+</table>
 <% end %>

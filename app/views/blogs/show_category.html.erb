@@ -6,7 +6,7 @@
         <div class="col-md-6">
           <div class="card">
             <div>
-               <%= image_tag(blog.image , style: "height:100%; width:100%;") if blog.image.present?  %>    
+               <%= image_tag(blog.image , style: "height:250px; width:250px;") if blog.image.present?  %>    
             </div>
               <span><i><%= blog.category.try(:name) %></i></span>
                 <div class="card-body">
@@ -22,8 +22,10 @@
                   </small><br>
                   <hr>
                   <%= link_to 'Read more >>', blog, class: "btn" %>
+                  <% if (user_signed_in? &&current_user.role== "Admin")  %>
                   <span><%= link_to 'Edit', edit_blog_path(blog) %></span>
                   <span><%= link_to 'Destroy', blog, method: :delete, data:{ confirm: 'Are you sure?' } %></span>
+                  <% end %>
                 </div>
           </div><br>
         </div>
