@@ -21,8 +21,12 @@
     
     <div class="navbar">
       <h1> <%= link_to "Blog", root_path %></h1> 
-      <% if user_signed_in? && current_user.role =="ADMIN" %>
+          
         <ul class="nav justify-content-end">
+          <li class="nav-item"> 
+            <%= link_to 'New Blog', new_blog_path %> 
+          </li>
+        <% if user_signed_in? && current_user.role =="ADMIN" %>  
           <li class="nav-item">
            <%= link_to "New Category",  new_category_path %></h1> 
           </li>
@@ -35,8 +39,8 @@
            <li class="nav-item">
            <%= link_to "All Tags",  tags_path %></h1> 
           </li>
+        <% end %>
         </ul>
-      <% end %>
     </div>
 
     <div class="main">

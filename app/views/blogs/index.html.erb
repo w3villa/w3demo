@@ -1,61 +1,51 @@
 <p id="notice"><%= notice %></p>
-<div class="bloglist">
-  <div class="left">
+
+<div class="container-fluid" id="main">
+
     <div class="row">
-      <% @blogs.each do |blog| %>
-        <div class="col-md-6">
-          <div class="card">
-            <div>
-              <%= image_tag(blog.image , style: "height:100%; width:100%;") if blog.image.present?  %> 
-            </div>
-              <span><i class="fa fa-list-alt icon" aria-hidden="true"></i>
-                <%= blog.category.try(:name) %></span>
-                <div class="card-body">
-                  <h4 class="heading"><%= blog.title %></h4>
-                  <p><%= truncate(strip_tags(blog.rich_text_body.to_s), length: 150) %></p>
-                  <small><strong><i class="fa fa-tag icon"> </i></strong>
-                    <%= blog.tag_list%>
+        
+        <!-- column1 -->
+       
+         <div class="col-md-8">
 
-                  </small><br>
-                  <small><i class="fa fa-user icon"></i><%= blog.user.email %></small>
-                  <small><span></span> &nbsp;</span>
-                    <i class="fa fa-clock-o ">-</i> <%= blog.created_at %>
-                  </small><br>
-                  <hr>
-                  <%= link_to 'Read more >>', blog, class: "btn" %>
+          <% @blogs.to_a.reverse.each do |blog| %>
+           <div class="row shadow-lg blog-container">
+             <div class="col-md-4">
+                <%= image_tag(blog.try(:image), class: "blog-img img-fluid") %> 
+             </div> 
+             <div class="col-md-8">
+                <div class="container-fluid" id="article-card">
+                    <div class="container article-detail"> 
+                      <h3><%= blog.title %></h3>
+                      <small> <%= blog.user.email %></small>
+                      <p><%= truncate(strip_tags(blog.rich_text_body.to_s), length: 150)  %></p>
+                      <% if ((user_signed_in? && current_user == blog.user) or (user_signed_in? &&current_user.role== "ADMIN")) %>
+                       <%= link_to 'Edit', edit_blog_path(blog), class: "btn" %>
+                      <% end %>
+                      <%= link_to 'read more', blog, class: "btn" %>
+                    </div>  
+                </div>  
+             </div> 
+           </div>   
+          <% end %>  
+         </div>
 
-                  <% if ((user_signed_in? && current_user == blog.user) or (user_signed_in? &&current_user.role== "ADMIN"))   %>
-                      <span><%= link_to 'Edit', edit_blog_path(blog) %></span>
-                      <span><%= link_to 'Destroy', blog, method: :delete, data:{ confirm: 'Are you sure?' } %></span>
-                  <% end %>
-                </div>
-          </div><br>
+        <!-- column2 start-->
+
+         <div class="col-md-4 column2">
+
+         <%= render partial: "categories", locals: {categories: @categories} %>
+         <%= render partial: "tag", locals: {tags: @tags} %>
+
+            
+
         </div>
-      <% end %>
-    </div>
-    <%= link_to 'New Blog', new_blog_path, class:"newbutton"  %> 
-  </div>
-  <div class="right">
-    <div class="searchbox">
-      <input type="text" placeholder="Search" class="form-control input">
-      <button>Search</button> 
-    </div>
-    <div class="recentpost">
-      <h6>Recent Post</h6>
-        <table>
-          <tr>
-            <td >
-              <%= image_tag("web.jpg",height:"50px;", width:"50px;") %>   
-            </td>
-            <td>
-            Web development is the work involved in developing a Web site for the Internet 
-            </td>
-          <hr>
-          </tr>
-        </table>
-    </div>
-    <%= render partial: "categories", locals: {categories: @categories} %>
-    <%= render partial: "tag", locals: {tags: @tags} %>
 
-  </div>
+        <!--column2 end  -->
+
+    </div>
+
+
 </div>
+
+     
