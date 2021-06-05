@@ -22,21 +22,23 @@
       <%= form.label :body %>
       <%= form.rich_text_area :body%>
   </div>
+  <br>
   <div class="field">
-      <%= form.label :category%>
+      <%= form.label :category%><br>
       <%= form.select :category_id, Category.all.map {|c|[c.name, c.id]}, class: "form-control" %>
   </div><br/>
   
   <div class="field">
-   <%= form.label :tags %>
-   <% Tag.all.each do |tag| %> 
-     <%= check_box_tag "blog[tag_ids][]", tag.id %>
-     <%= tag.name %>  
-   <% end %> 
+   <%= form.label :tag %><br>
+     <%= hidden_field_tag "blog[tag_ids][]", nil %>
+       <% Tag.all.each do |tag| %> 
+        <%= check_box_tag "blog[tag_ids][]", tag.id ,@blog.tag_ids.include?(tag.id) %>
+       <%= tag.name %>
+      <% end %> 
   </div>
-
+  <br/>
   <div class="field">
-       <%= form.label :user_id  %>
+       <%= form.label :user_id  %><br>
        <%= form.select :user_id, User.all.map {|c|[c.email, c.id]}, class: "form-control" %>
   </div>  
 

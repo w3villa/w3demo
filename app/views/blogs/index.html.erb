@@ -17,7 +17,8 @@
                 <div class="container-fluid" id="article-card">
                     <div class="container article-detail"> 
                       <h3><%= blog.title %></h3>
-                      <small> <%= blog.user.email %></small>
+                      <small> <%= blog.user.email %></small><br>
+                      <small>Tags:<%= blog.tag_list%></small>
                       <p><%= truncate(strip_tags(blog.rich_text_body.to_s), length: 150)  %></p>
                       <% if ((user_signed_in? && current_user == blog.user) or (user_signed_in? &&current_user.role== "ADMIN")) %>
                        <%= link_to 'Edit', edit_blog_path(blog), class: "btn" %>
