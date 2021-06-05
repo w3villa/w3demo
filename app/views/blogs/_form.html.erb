@@ -39,7 +39,7 @@
   <br><br>
   <div class="field">
        <%= form.label :user_id  %>
-       <%= form.select :user_id, User.all.map {|c|[c.name, c.id]}, class: "form-control" %>
+       <%= form.select :user_id, User.all.map {|c|[c.email, c.id]}, class: "form-control" %>
   </div>  
   <div class="action">
     <%= form.submit  class: "btn-submit" %>
