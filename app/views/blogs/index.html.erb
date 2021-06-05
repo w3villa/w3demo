@@ -9,7 +9,7 @@
          <div class="col-md-8">
 
           <% @blogs.to_a.reverse.each do |blog| %>
-           <div class="row shadow-lg blog-container">
+           <div class="row  blog-container">
              <div class="col-md-4">
                 <%= image_tag(blog.try(:image), class: "blog-img img-fluid") %> 
              </div> 
