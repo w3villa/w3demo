@@ -12,7 +12,9 @@
         <%= @blog.tag_list%>
       </h5>
         <p><%= @blog.body %></p>
-          <%= link_to 'Edit', edit_blog_path(@blog) %> |
-          <%= link_to 'Back', blogs_path %>
+          <% if user_signed_in? && current_user == @blog.user %>
+            <span><%= link_to 'Edit', edit_blog_path(@blog) %></span>
+            <span><%= link_to 'Destroy', @blog, method: :delete, data:{ confirm: 'Are you sure?' } %></span>
+         <% end %>
  </div>
 

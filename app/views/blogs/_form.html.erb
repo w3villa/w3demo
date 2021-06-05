@@ -40,14 +40,16 @@
     <div class="formfield">
        <%= form.select :category_id, Category.all.map {|c|[c.name, c.id]}, class: "form-control" %>
     </div>
-  </div> <div class="form-row">
-    <div class="formlable">
-      <%= form.label :tag_list%>
-    </div>
-    <div class="formfield">
-      <%= form.text_field :tag_list %>
-    </div>
   </div>
+
+<div >
+   <%= form.label :tag, class: "formlable" %>
+   <%= hidden_field_tag "blog[tag_ids][]", nil %>
+     <% Tag.all.each do |tag| %> 
+      <%= check_box_tag "blog[tag_ids][]", tag.id ,@blog.tag_ids.include?(tag.id) %>
+     <%= tag.name %>
+    <% end %> 
+</div>
   <div class="form-row">
     <div class="formlable">
          <%= form.label :user_id  %>
