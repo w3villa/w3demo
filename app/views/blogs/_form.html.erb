@@ -26,21 +26,22 @@
       <%= form.label :category%>
       <%= form.select :category_id, Category.all.map {|c|[c.name, c.id]}, class: "form-control" %>
   </div><br/>
+  
+  <div class="field">
+   <%= form.label :tags %>
+   <% Tag.all.each do |tag| %> 
+     <%= check_box_tag "blog[tag_ids][]", tag.id %>
+     <%= tag.name %>  
+   <% end %> 
+  </div>
 
-  <% @blog.tags.each_with_index do |tag, i| %> 
-    <div>
-      <input type="hidden" value="<%= tag.id %>" name="blog[tags_attributes][<%= i %>][id]">
-      <label>Tag#<%= i + 1%>: <%= tag.name %></label>
-      <input type="hidden" value="false" name="blog[tags_attributes][<%= i %>][_destroy]">
-      <input type="checkbox" value="true" name="blog[tags_attributes][<%= i %>][_destroy]">
-    </div>
-  <% end %>
-  <label>New tag: <input type="text" value="" name="blog[tags_attributes][<%= @blog.tags.count %>][name]"></label>
-  <br><br>
   <div class="field">
        <%= form.label :user_id  %>
        <%= form.select :user_id, User.all.map {|c|[c.email, c.id]}, class: "form-control" %>
   </div>  
+
+  
+
   <div class="action">
     <%= form.submit  class: "btn-submit" %>
   </div>
@@ -48,3 +49,5 @@
 
 
 <% end %>
+
+

@@ -1,6 +1,12 @@
 class TagsController < ApplicationController
   before_action :set_tag, only: %i[ show edit update destroy ]
 
+  def authorize_user
+      if  current_user.role != "ADMIN"
+        redirect_to root_path, notice: "You are not authorized to access this panel"
+      end
+    end
+
   # GET /tags or /tags.json
   def index
     @tags = Tag.all
@@ -18,6 +24,8 @@ class TagsController < ApplicationController
   # GET /tags/1/edit
   def edit
   end
+
+  
 
   # POST /tags or /tags.json
   def create

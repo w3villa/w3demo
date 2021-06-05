@@ -1,6 +1,6 @@
 class BlogsController < ApplicationController
   before_action :set_blog, only: %i[ show edit update destroy ]
-  before_action :fetch_all_categories, only: %i[ index show_category show_tag]
+  before_action :fetch_all_categories, only: %i[ index show_category show show_tag]
   before_action :fetch_all_tags, only: %i[ index show_tag  show_category]
 
   # GET /blogs or /blogs.json
@@ -86,6 +86,6 @@ class BlogsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def blog_params
-      params.require(:blog).permit(:title, :body, :user_id, :category_id, :tag_list,:tag_id, :image,tags_attributes: [:name, :id, :_destroy])
+      params.require(:blog).permit(:title, :body, :user_id, :category_id, :tag_list,:tag_id, :image, tag_ids: [])
     end
 end

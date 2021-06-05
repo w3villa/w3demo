@@ -1,5 +1,12 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: %i[ show edit update destroy ]
+  before_action :authorize_user
+
+  def authorize_user
+      if  current_user.role != "ADMIN" 
+          redirect_to root_path, notice: "You are not authorized to access this panel"
+      end
+    end
 
   # GET /categories or /categories.json
   def index

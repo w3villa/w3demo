@@ -90,8 +90,26 @@ Things you may want to cover:
 <% end %>
 
 
+ def blog_params
+      params.require(:blog).permit(:title, :body, :user_id, :category_id, :tag_list,:tag_id, :image,tags_attributes: [:name, :id, :_destroy])
+    end
 
 
+
+
+  def self.tag_counts
+    Tag.select('tags.*, count(taggings.tag_id) as count').joins(:taggings).group('taggings.tag_id')
+  end
+
+  def tag_list
+    tags.map(&:name).join(', ')
+  end
+
+  def tag_list=(names)
+    self.tags = names.split(',').map do |n|
+      Tag.where(name: n.strip).first_or_create!
+    end
+  end
 
 
 
@@ -134,3 +152,17 @@ Things you may want to cover:
   <div class="actions">
       <%= form.submit %>
   </div>
+
+
+
+
+<% @blog.tags.each_with_index do |tag, i| %> 
+    <div>
+      <input type="hidden" value="<%= tag.id %>" name="blog[tags_attributes][<%= i %>][id]">
+      <label>Tag#<%= i + 1%>: <%= tag.name %></label>
+      <input type="hidden" value="false" name="blog[tags_attributes][<%= i %>][_destroy]">
+      <input type="checkbox" value="true" name="blog[tags_attributes][<%= i %>][_destroy]">
+    </div>
+  <% end %>
+  <label>New tag: <input type="text" value="" name="blog[tags_attributes][<%= @blog.tags.count %>][name]"></label>
+  <br><br>
