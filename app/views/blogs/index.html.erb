@@ -6,7 +6,7 @@
         <div class="col-md-6">
           <div class="card">
             <div>
-              <%= image_tag(blog.image , style: "height:200px; width:200px;", class: "img-fluid") if blog.image.present?  %> 
+              <%= image_tag(blog.image , style: "height:200px; width:200px;", class: "img-fluid") if blog.image.present?  %>
             </div>
               <span><i class="fa fa-list-alt icon" aria-hidden="true"></i>
                 <%= blog.category.try(:name) %></span>
@@ -38,7 +38,7 @@
   </div>
   <div class="right">
     <div class="searchbox">
-      <input type="text" placeholder="Search" class="form-control input">
+      <p><input type="text" placeholder="Search" class="form-control input"></p>
       <button>Search</button> 
     </div>
     <div class="recentpost">
@@ -46,10 +46,9 @@
         <table>
           <tr>
             <td >
-              <%= image_tag("web.jpg",height:"50px;", width:"50px;") %>   
-            </td>
-            <td>
-            Web development is the work involved in developing a Web site for the Internet 
+              <%= image_tag(Blog.last.image,style: "height:150px;, width:150px;",class: "img-fluid") %>
+             <h4> <%= Blog.last.title %> </h4>
+              <%= Blog.last.body %>
             </td>
           <hr>
           </tr>

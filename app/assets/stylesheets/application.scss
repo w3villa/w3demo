@@ -42,7 +42,10 @@
   }
 
 }
-
+#nav-image{
+  filter :brightness(0) invert(1);
+  margin-left:10px;
+}
 #navbar-button{
   border: none;
 }
