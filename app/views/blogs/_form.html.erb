@@ -43,16 +43,14 @@
   </div> 
 
 
-  <% @blog.tags.each_with_index do |tag, i| %> 
-    <div>
-      <input type="hidden" value="<%= tag.id %>" name="blog[tags_attributes][<%= i %>][id]">
-      <label>Tag#<%= i + 1%>: <input type="text" value="<%= tag.name %>" name="user[tags_attributes][<%= i %>][name]"></label>
-      <input type="hidden" value="false" name="blog[tags_attributes][<%= i %>][_destroy]">
-      <input type="checkbox" value="true" name="blog[tags_attributes][<%= i %>][_destroy]">
-    </div>
-  <% end %>
+ 
 
-  <label>New tag: <input type="text" value="" name="blog[tags_attributes][<%= @blog.tags.count %>][name]"></label>
+  <%= form.label :tag, class: "formlable" %>
+     <%= hidden_field_tag "blog[tag_ids][]", nil %>
+       <% Tag.all.each do |tag| %> 
+        <%= check_box_tag "blog[tag_ids][]", tag.id ,@blog.tag_ids.include?(tag.id) %>
+       <%= tag.name %>
+      <% end %>  
 
   <div class="form-row">
     <div class="formlable">
