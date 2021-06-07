@@ -1,0 +1,56 @@
+
+<div class="container-fluid " id="dashboard">
+  <div class="row">
+    <div class="col-md-3 col1 ">
+      <div class="card text-center">
+         <span><%= image_tag "avatar.png", class: "admin-img img-fluid" %></span>
+          <div class="card-body text-center">
+            <h5 class="card-title"><%= @admin %></h5>
+            <div class="card-details">
+                <ul class="list-group">
+                  <li class="list-group-item align-items-center m-2">
+                    <%= link_to "New Category",  new_category_path , class: "text-dark"%>
+                  </li>
+                  <li class="list-group-item align-items-center m-2">
+                    <%= link_to "New Tag",  new_tag_path , class: "text-dark"%>
+                  </li>
+                  <li class="list-group-item align-items-center m-2">
+                    <%= link_to "All Category",  categories_path , class: "text-dark"%> 
+                  </li>
+                  <li class="list-group-item align-items-center m-2">
+                    <%= link_to "All Tags",  tags_path , class: "text-dark"%>
+                  </li>
+                </ul>      
+            </div> 
+          </div>
+      </div>
+    </div>
+    <div class="col-md-6 col2 ">
+      <div class="container alluser">
+        <h2> All Users </h2> 
+        <hr>
+        <div class="row">
+        <% @users.each do |user| %>
+            <div class="card"> 
+              <div class="card-body">
+                <h3><%= user.name %></h3>
+                <br>
+                  <%= link_to 'Show', admin_user_path(user) ,class: "btn btn-outline-primary" %>
+                  <%= link_to 'Edit', edit_admin_user_path(user) ,class: "btn btn-outline-secondary"  %>
+                  <%= link_to 'Destroy', admin_user_path(user), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-danger"  %>          
+              </div>        
+          </div>
+        <% end %>  
+        </div>  
+      </div>
+    </div>
+   
+    <div class="col-md-3 col3 ">
+        <%= render partial: "categories", locals: {categories: @categories} %>
+        <%= render partial: "tag", locals: {tags: @tags} %>
+    </div>
+
+  </div>
+
+</div>
+

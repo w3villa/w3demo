@@ -1,0 +1,26 @@
+<div class="card categories shadow-sm">
+<div class="card-header">Categories</div>
+<div class="card-body">
+   <ul class="list-group">
+    <% @categories.each do |category| %>
+        <li class="list-group-item d-flex justify-content-between align-items-center m-2">
+          <%= link_to category.name, show_blogs_category_path(:category_slug => category.slug) %>
+          <span class="badge bg-primary text-white badge-pill"><%= category.blogs.count %></span>
+        </li>
+        <br>
+    <% end %>
+   </ul>     
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+

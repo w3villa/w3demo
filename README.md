@@ -166,3 +166,8 @@ Things you may want to cover:
   <% end %>
   <label>New tag: <input type="text" value="" name="blog[tags_attributes][<%= @blog.tags.count %>][name]"></label>
   <br><br>
+
+
+
+
+  w3villa-blog-talib
