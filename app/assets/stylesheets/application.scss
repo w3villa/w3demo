@@ -35,14 +35,17 @@
   h1{
     color:#fff;
     margin-left:2rem;
-  }
+      }
   li{ 
     margin: 1rem 1rem;
-    border-bottom:1px solid silver;
+    
   }
 
 }
 
+#navbar-button{
+  border: none;
+}
 .main{
   margin: 0rem 1.8rem;
   @media (max-width: 992px){
@@ -196,7 +199,7 @@ ul{
 }
 li{ 
   margin: 1rem 1.5rem;
-  border-bottom:1px solid silver;
+  
 }
 
 .badge{
