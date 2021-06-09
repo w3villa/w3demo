@@ -12,6 +12,11 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   # get "/users"
   namespace :admin do 
+    root to: "dashboards#index"
     resources :users
+    get "blogs/", to: "dashboards#blogs"
+    get "category/", to: "dashboards#category"
+    get "tag/", to: "dashboards#tag"
+   
   end
 end

@@ -40,14 +40,21 @@
     <div class="formfield">
        <%= form.select :category_id, Category.all.map {|c|[c.name, c.id]}, class: "form-control" %>
     </div>
-  </div> <div class="form-row">
-    <div class="formlable">
-      <%= form.label :tag_list%>
-    </div>
-    <div class="formfield">
-      <%= form.text_field :tag_list %>
-    </div>
   </div>
+
+    
+  <div class="d-flex">
+      <% @blog.tags.each_with_index do |tag, i| %> 
+      <div class="mr-2">
+        <input type="hidden" value="<%= tag.id %>" name="blog[tags_attributes][<%= i %>][id]">
+        <label>Tag:<%= i +1 %> <%=tag.name  %> </label>
+        <input type="hidden" value="false" name="blog[tags_attributes][<%= i %>][_destroy]">
+        <input type="checkbox" value="true" name="blog[tags_attributes][<%= i %>][_destroy]">
+      </div>
+    <% end %>
+  </div>
+  
+<label>Create New Tag: <input type="text" value="" name="blog[tags_attributes][<%= @blog.tags.count %>][name]"></label>
   <div class="form-row">
     <div class="formlable">
          <%= form.label :user_id  %>

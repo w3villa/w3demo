@@ -2,7 +2,8 @@ class BlogsController < ApplicationController
   before_action :set_blog, only: %i[ show edit update destroy ]
   before_action :fetch_all_categories, only: %i[ index show_category ]
   before_action :fetch_all_tags, only: %i[ index show_tag  ]
-
+  
+ 
   # GET /blogs or /blogs.json
   def index
     @blogs = Blog.all
@@ -35,8 +36,7 @@ class BlogsController < ApplicationController
   # POST /blogs or /blogs.json
   def create
     @blog = Blog.new(blog_params)
-    
-
+    @blog.user = current_user
     respond_to do |format|
       if @blog.save
         format.html { redirect_to @blog, notice: "Blog was successfully created." }
@@ -86,6 +86,8 @@ class BlogsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def blog_params
-      params.require(:blog).permit(:title, :body, :user_id, :category_id, :tag_list,:tag_id, :image)
+ 
+      
+      params.require(:blog).permit(:title, :body, :user_id, :category_id, :tag_list,:tag_id, :image , tag_attributes: [:id ,:name, :_destroy],:tag_ids =>[])
     end
 end

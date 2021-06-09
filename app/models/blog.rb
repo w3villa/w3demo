@@ -18,6 +18,8 @@ class Blog < ApplicationRecord
   has_one_attached :image
   has_rich_text :body
 
+  accepts_nested_attributes_for :tags, allow_destroy: true, :reject_if => proc { |attributes| attributes['name'].blank? }
+
 
 
 

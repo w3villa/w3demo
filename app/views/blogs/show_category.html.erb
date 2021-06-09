@@ -22,8 +22,10 @@
                   </small><br>
                   <hr>
                   <%= link_to 'Read more >>', blog, class: "btn" %>
-                  <span><%= link_to 'Edit', edit_blog_path(blog) %></span>
-                  <span><%= link_to 'Destroy', blog, method: :delete, data:{ confirm: 'Are you sure?' } %></span>
+                   <% if user_signed_in? && current_user == blog.user %>
+                    <span><%= link_to 'Edit', edit_blog_path(blog) %></span>
+                    <span><%= link_to 'Destroy', blog, method: :delete, data:{ confirm: 'Are you sure?' } %></span>
+                    <% end %>
                 </div>
           </div><br>
         </div>
