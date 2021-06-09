@@ -88,6 +88,6 @@ class BlogsController < ApplicationController
     def blog_params
  
       
-      params.require(:blog).permit(:title, :body, :user_id, :category_id, :tag_list,:tag_id, :image , tag_attributes: [:id ,:name, :_destroy],:tag_ids =>[])
+      params.require(:blog).permit(:title, :body, :user_id, :category_id, :tag_list,:tag_id, :image , blog_tags_attributes: [:id ,:tag_id, :_destroy], :tag_ids =>[])
     end
 end

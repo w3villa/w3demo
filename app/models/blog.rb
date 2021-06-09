@@ -6,8 +6,8 @@ class Blog < ApplicationRecord
   validates :title, length: { minimum: 1 }
 	validates :body, presence: true
 	validates :user_id, numericality: true
-  validates :image, presence: true
-  validates :tag_list, presence: true
+  # validates :image, presence: true
+  # validates :tag_list, presence: true
 
 
 	belongs_to :user
@@ -18,7 +18,7 @@ class Blog < ApplicationRecord
   has_one_attached :image
   has_rich_text :body
 
-  accepts_nested_attributes_for :tags, allow_destroy: true, :reject_if => proc { |attributes| attributes['name'].blank? }
+  accepts_nested_attributes_for :blog_tags, allow_destroy: true
 
 
 
