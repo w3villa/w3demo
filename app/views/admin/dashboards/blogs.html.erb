@@ -1,0 +1,48 @@
+<%= render 'sidebar' %>
+  <main class="app-content">
+    <div class="app-title">
+      <div>
+        <h1>
+        	<i class="fa fa-dashboard"></i> Blogs
+        	<hr>
+        </h1>
+        <p><%= link_to 'Create New Blog', new_blog_path , class:"btn btn-primary icon-btn"%>
+        </p>   
+      </div>
+      <ul class="app-breadcrumb breadcrumb">
+        <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+        <li class="breadcrumb-item"><a >All Blogs</a></li>
+      </ul>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="tile">
+          <h3 class="tile-title"> All Blogs </h3>
+						<table class="table table-hover table-bordered">
+						  <thead>
+						    <tr>
+						    	<th>Sr.No</th>
+						      <th>Title</th>
+						      <th>Body</th>
+						      <th>Tag</th>
+						      <th colspan="3"></th>
+						    </tr>
+						  </thead>
+						  <tbody>
+						    <% @blogs.each do |blog| %>
+						      <tr>
+						      	<td><%= blog.id %></td>
+						        <td><%= blog.title %></td>
+						        <td><%= truncate(strip_tags(blog.rich_text_body.to_s), length: 50) %></td>
+						        <td><%= blog.tag_list%></td>
+						        <td><%= link_to 'Show', blog ,class: "btn btn-outline-info" %></td>
+						        <td><%= link_to 'Edit', edit_blog_path(blog),class: "btn btn-outline-secondary" %></td>
+						        <td><%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } ,class: "btn btn-outline-danger"%></td>
+						      </tr>
+						    <% end %>
+						  </tbody>
+						</table>     
+        </div>
+      </div>
+    </div>
+  </main>

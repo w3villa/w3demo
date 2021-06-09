@@ -1,0 +1,45 @@
+<%= render 'sidebar' %>
+  <main class="app-content">
+    <div class="app-title">
+      <div>
+        <h1>
+        	<i class="fa fa-dashboard"></i> Tags
+        	<hr>
+        </h1>
+        <p><%= link_to 'Create New tag', new_tag_path , class:"btn btn-primary icon-btn"%>
+        </p>   
+      </div>
+      <ul class="app-breadcrumb breadcrumb">
+        <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+        <li class="breadcrumb-item"><a >Tags</a></li>
+      </ul>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="tile">
+          <h3 class="tile-title"> All Tags </h3>
+						<table class="table table-hover table-bordered">
+						  <thead>
+						    <tr>
+						      <th>Sr.No</th>
+						      <th>Body</th>
+						   
+						    </tr>
+						  </thead>
+						  <tbody>
+						    <% @tags.each do |tag| %>
+						      <tr>
+						        <td><%= tag.id %></td>
+   					        <td><%= tag.name%></td>
+						        <td><%= link_to 'Show', tag ,class: "btn btn-outline-primary" %>
+                    </td>
+						        <td><%= link_to 'Edit', edit_tag_path(tag),class: "btn btn-outline-secondary"   %></td>
+						        <td> <%= link_to 'Destroy', tag, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-danger"  %>  </td>
+						      </tr>
+						    <% end %>
+						  </tbody>
+						</table>     
+        </div>
+      </div>
+    </div>
+  </main>
