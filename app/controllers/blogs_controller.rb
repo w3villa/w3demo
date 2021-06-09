@@ -34,8 +34,10 @@ class BlogsController < ApplicationController
   end
 
   # POST /blogs or /blogs.json
+
+  
   def create
-    @blog = Blog.new(blog_params)
+    @blog = Blog.new(blog_params.merge(user_id: current_user.id))
     @blog.user = current_user
     respond_to do |format|
       if @blog.save
@@ -88,6 +90,6 @@ class BlogsController < ApplicationController
     def blog_params
  
       
-      params.require(:blog).permit(:title, :body, :user_id, :category_id, :tag_list,:tag_id, :image , blog_tags_attributes: [:id ,:tag_id, :_destroy], :tag_ids =>[])
+      params.require(:blog).permit(:title, :body, :category_id, :tag_list,:tag_id, :image , blog_tags_attributes: [:id ,:tag_id, :_destroy], :tag_ids =>[])
     end
 end

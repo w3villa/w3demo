@@ -65,10 +65,10 @@
     
   <div class="form-row">
     <div class="formlable">
-         <%= form.label :user_id  %>
+      <%= form.label :user_id  %>
     </div>
     <div class="formfield">
-       <%= form.select :user_id, User.all.map {|c|[c.name, c.id]}, class: "form-control" %>
+      <%= current_user.name %>
     </div>
   </div>  
   <div class="action">
