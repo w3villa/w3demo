@@ -1,8 +1,9 @@
 class Admin::ApplicationController < ApplicationController
 	# layout "welcome"
 	before_action :authenticate_user!
-	before_action :authorize_user
 
+	before_action :authorize_user
+	#layout "dashboard"
 	private
 
 		def authorize_user

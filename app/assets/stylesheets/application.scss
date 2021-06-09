@@ -19,7 +19,7 @@
 .header {
 	padding: 5px;
 	text-decoration: none;
-	background-color:  #02297c ;
+	background-image:linear-gradient(to right,#373B44,#654ea3);
 	a, b {
 	  color: white;
 		margin:5px;
@@ -27,7 +27,7 @@
 }
 
 .navbar{
-  background-color:#253055;
+  background-image:linear-gradient(to left,#a8c0ff,#3f2b96);
   padding:1rem;
   a{
     color: white;
@@ -44,21 +44,28 @@
 }
 #nav-image{
   filter :brightness(0) invert(1);
-  margin-left:10px;
+  margin: 1rem 1rem;
 }
 #navbar-button{
   border: none;
 }
-.main{
-  margin: 0rem 1.8rem;
-  @media (max-width: 992px){
-    margin: 0rem 1rem;  
-  }
-  @media(max-width:768px){
-    margin: 0rem 1rem;    
-  }
-}
 
+.login-page{
+  background-image: url("login.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 500px;
+}
+#sign-in{
+  margin-top:250px;
+  margin-right:42%;
+  border-radius:40px;
+}
+#sign-up{
+  margin-top:250px;
+  margin-right:5px;
+  border-radius:40px;
+}
 .blogsection{
  	height: 13rem;
  	background-color:#d6eaf8;
@@ -83,7 +90,7 @@
 }
 
 .footer{
- 	background-color:#253055;
+ 	 background-image:linear-gradient(to right,#a8c0ff,#3f2b96);
  	padding: 1rem;
  	color: white;
  	text-align: center;
@@ -92,9 +99,14 @@
   color:white;
   }
 }
-
+.total-body{
+  background-image: url("background1.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 .bloglist{
 	display: flex;
+  
  	justify-content: center;
   margin-top:3rem;
   @media(max-width:798px){
@@ -109,7 +121,7 @@
  	}
 }
   
-  
+
 .newbutton{
   background-color: #253055;
   color: #fff;
@@ -138,7 +150,7 @@
   border-radius: 5px;
   background-color: #fff;
   border: 1px solid  #c5c5cb ;
-  box-shadow: 1px 1px 3px 2px #d5d5da;
+  
   @media(max-width:798px){
     display:none;
   }
@@ -163,9 +175,10 @@ button{
 .recentpost{
   margin-top: 30px;
   padding: 15px 0px 16px ;
+  background-color: #fff;
   border-radius: 5px;
   border: 1px solid  #c5c5cb ;
-  box-shadow: 1px 1px 3px 2px #d5d5da;
+
   @media(max-width:798px){
     width:50%;
     margin:10px;
@@ -186,9 +199,10 @@ h6{
 .categories{
   margin-top: 30px;
   padding: 15px 0px 16px ;
+  background-color: #fff;
   border-radius: 5px;
   border: 1px solid  #c5c5cb ;
-  box-shadow: 1px 1px 3px 2px #d5d5da;
+  
   @media(max-width:798px){
     width:50%;
     margin:10px;
@@ -227,6 +241,7 @@ img{
 
 .form{
   border: 1px solid  #bdc7d0;
+  background-color: #fff;
   box-shadow: 2px 2px 10px 2px #eaedf0;
   border-radius:10px;
   width: 75%;
@@ -356,6 +371,7 @@ span{
   float: right;
   margin-bottom:5px;
 }
+
 
 
 

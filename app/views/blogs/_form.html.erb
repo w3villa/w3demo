@@ -1,3 +1,4 @@
+
 <%= form_with(model: blog, local: true) do |form| %>
   <% if blog.errors.any? %>
     <div id="error_explanation">
@@ -9,6 +10,7 @@
       </ul>
     </div>
   <% end %>
+  
   <table class="table">
     <tr>
       <div class="form-row">
@@ -67,17 +69,21 @@
     </div> 
   </tr>
 
- 
   <tr>
     <td>
       <%= form.label :tag, class: "formlable" %>
     </td>
     <td>
-      <%= hidden_field_tag "blog[tag_ids][]", nil %>
-        <% Tag.all.each do |tag| %> 
-        <%= check_box_tag "blog[tag_ids][]", tag.id ,@blog.tag_ids.include?(tag.id) %>
-        <%= tag.name %>
-      <% end %>
+
+      <% @blog.tags.each_with_index do |tag,i| %>
+        <input type="hidden" value="<%= tag.id %>" name="blog[tags_attributes][<%= i %>][id]" >
+        <label>Tag:<%= i +1 %> <%=tag.name  %>:  </label>
+        <input type="hidden" value="false" name="blog[tags_attributes][<%= i %>][_destroy]">
+        <input type="checkbox" value="true" name="blog[tags_attributes][<%= i %>][_destroy]">
+        <br><br>
+        <% end %>
+        <label>Create New Tag: <input type="text" value="" name="blog[tags_attributes][<%= @blog.tags.count %>][name]"></label>
+
     </td>  
   </tr>
   <tr>
@@ -103,3 +109,4 @@
   </tr>
 <% end %>
 </table>
+

@@ -1,60 +1,69 @@
 <p id="notice"><%= notice %></p>
-<div class="bloglist ">
-  <div class="left">
-    <div class="row">
-      <% @blogs.each do |blog| %>
-        <div class="col-md-6">
-          <div class="card">
-            <div>
-              <%= image_tag(blog.image , style: "height:200px; width:200px;", class: "img-fluid") if blog.image.present?  %>
-            </div>
-              <span><i class="fa fa-list-alt icon" aria-hidden="true"></i>
-                <%= blog.category.try(:name) %></span>
-                <div class="card-body">
-                  <h4 class="heading"><%= blog.title %></h4>
-                  <p><%= truncate(strip_tags(blog.rich_text_body.to_s), length: 150) %></p>
-                  <small><strong><i class="fa fa-tag icon"> </i></strong>
-                    <%= blog.tag_list%>
+<% if user_signed_in? %>
+  <div class="bloglist ">
+    <div class="left">
+      <div class="row">
+        <% @blogs.each do |blog| %>
+          <div class="col-md-6">
+            <div class="card">
+              <div>
+                <%= image_tag(blog.image , style: "height:200px; width:200px;", class: "img-fluid") if blog.image.present?  %>
+              </div>
+                <span><i class="fa fa-list-alt icon" aria-hidden="true"></i>
+                  <%= blog.category.try(:name) %></span>
+                  <div class="card-body">
+                    <h4 class="heading"><%= blog.title %></h4>
+                    <p><%= truncate(strip_tags(blog.rich_text_body.to_s), length: 150) %></p>
+                    <small><strong><i class="fa fa-tag icon"> </i></strong>
+                      <%= blog.tag_list %>
 
-                  </small><br>
-                  <small><i class="fa fa-user icon"></i><%= blog.user.email %></small>
-                  <small><span></span> &nbsp;</span>
-                    <i class="fa fa-clock-o ">-</i> <%= blog.created_at %>
-                  </small><br>
-                  <hr>
-                  <%= link_to 'Read more >>', blog, class: "btn" %>
-                  <% if ((user_signed_in? && current_user == blog.user) or (user_signed_in? &&current_user.role== "Admin") )   %>
-                    <span><%= link_to 'Edit', edit_blog_path(blog) %></span>
-                    <span><%= link_to 'Destroy', blog, method: :delete, data:{ confirm: 'Are you sure?'}%></span>
-                  <% end %>
-                </div>
-          </div><br>
-        </div>
-      <% end %>
+                    </small><br>
+                    <small><i class="fa fa-user icon"></i><%= blog.user.email %></small>
+                    <small><span></span> &nbsp;</span>
+                      <i class="fa fa-clock-o ">-</i> <%= blog.created_at %>
+                    </small><br>
+                    <hr>
+                    <%= link_to 'Read more >>', blog, class: "btn" %>
+                    <% if ((user_signed_in? && current_user == blog.user) or (user_signed_in? &&current_user.role== "Admin") )   %>
+                      <span><%= link_to 'Edit', edit_blog_path(blog) %></span>
+                      <span><%= link_to 'Destroy', blog, method: :delete, data:{ confirm: 'Are you sure?'}%></span>
+                    <% end %>
+                  </div>
+            </div><br>
+          </div>
+        <% end %>
+      </div>
+      <% if user_signed_in? %>
+      <%= link_to 'New Blog', new_blog_path, class:"newbutton"  %>
+      <% end %> 
     </div>
-    <% if user_signed_in? %>
-    <%= link_to 'New Blog', new_blog_path, class:"newbutton"  %>
-    <% end %> 
+    <div class="right">
+      <div class="searchbox">
+        <p><input type="text" placeholder="Search" class="form-control input"></p>
+        <button>Search</button> 
+      </div>
+      <div class="recentpost">
+        <h6>Recent Post</h6>
+          <table>
+            <tr>
+              <td >
+                <%= image_tag(Blog.last.image,style: "height:150px;, width:150px;",class: "img-fluid") %><br><br>
+               <h4> <%= Blog.last.title %> </h4>
+                <%= Blog.last.body %>
+              </td>
+            <hr>
+            </tr>
+          </table>
+      </div>
+      <%= render partial: "categories", locals: {categories: @categories} %>
+      <%= render partial: "tag", locals: {tags: @tags} %>
+    </div>
   </div>
-  <div class="right">
-    <div class="searchbox">
-      <p><input type="text" placeholder="Search" class="form-control input"></p>
-      <button>Search</button> 
-    </div>
-    <div class="recentpost">
-      <h6>Recent Post</h6>
-        <table>
-          <tr>
-            <td >
-              <%= image_tag(Blog.last.image,style: "height:150px;, width:150px;",class: "img-fluid") %>
-             <h4> <%= Blog.last.title %> </h4>
-              <%= Blog.last.body %>
-            </td>
-          <hr>
-          </tr>
-        </table>
-    </div>
-    <%= render partial: "categories", locals: {categories: @categories} %>
-    <%= render partial: "tag", locals: {tags: @tags} %>
+<% else %>
+  <div class="login-page container">
+      
+      <%= link_to "Sign In", new_user_session_path,class:"btn btn-lg btn-danger",id: "sign-in" %>
+      <%= link_to "Sign Up", new_user_registration_path,class:"btn btn-lg btn-danger",id: "sign-up" %>
+  
   </div>
-</div>
+<% end %>  

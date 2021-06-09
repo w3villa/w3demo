@@ -17,8 +17,11 @@ class Blog < ApplicationRecord
 	has_many :tags, through: :blog_tags
   has_one_attached :image
   has_rich_text :body
-   accepts_nested_attributes_for :tags,allow_destroy: true
+  accepts_nested_attributes_for :tags,allow_destroy: true,reject_if: :reject_posts
 
+  def reject_posts(attributes)
+    attributes['name'].blank?
+  end
 
 
   def self.tag_counts
@@ -30,9 +33,13 @@ class Blog < ApplicationRecord
   end
 
   def tag_list=(names)
-    self.tags = names.split(',').map do |n|
+    self.tags = names.split(",").map do |n|
       Tag.where(name: n.strip).first_or_create!
     end
   end
 
 end
+
+
+
+      
