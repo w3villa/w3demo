@@ -1,68 +1,70 @@
 <%= render 'sidebar' %>
-  <main class="app-content">
-    <div class="app-title">
-      <div>
-        <h1><i class="fa fa-dashboard"></i> Dashboard</h1>
-        <p>Welcome To Dashboard!!</p>
-      </div>
-      <ul class="app-breadcrumb breadcrumb">
-        <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-        <li class="breadcrumb-item"><a>Dashboard</a></li>
-      </ul>
-    </div>
-    <div class="row">
-      <div class="col-md-6 col-lg-3">
-        <div class="widget-small primary coloured-icon">
-          <i class="icon fa fa-users fa-3x"></i>
-            <div class="info">
-              <h4>Users</h4>
+<div id="layoutSidenav_content">
+  <main>
+    <div class="container-fluid px-4">
+      <h1 class="mt-4">Dashboard</h1>
+      <hr>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item active"><i class="fas fa-home "></i> /    <%= link_to "Dasboard",  admin_root_path %></li>
+        </ol>
+      <div class="row">
+        <div class="col-md-6 col-lg-3">
+          <div class="widget-small primary coloured-icon">
+            <i class="icon fa fa-users fa-3x"></i>
+              <div class="info">
+                <h4>Users</h4>
                 <p><b><%=@users.count %></b></p>
-            </div>
+              </div>
+          </div>
         </div>
-      </div>
-      <div class="col-md-6 col-lg-3">
-        <div class="widget-small info coloured-icon">
-          <i class="icon fa fa-thumbs-o-up fa-3x"></i>
+        <div class="col-md-6 col-lg-3">
+          <div class="widget-small info coloured-icon">
+            <i class="icon fa fa-file fa-3x"></i>
+              <div class="info">
+                <h4>Blogs</h4>
+                  <p><b><%=@blogs.count %></b></p>
+              </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="widget-small warning coloured-icon"><i class="icon fa fa-columns fa-3x"></i>
             <div class="info">
-              <h4>Blogs</h4>
-                <p><b><%=@blogs.count %></b></p>
+              <h4>Categories</h4>
+              <p><b><%=@categories.count %></b></p>
             </div>
+          </div>
         </div>
-      </div>
-      <div class="col-md-6 col-lg-3">
-        <div class="widget-small warning coloured-icon"><i class="icon fa fa-files-o fa-3x"></i>
-          <div class="info">
-            <h4>Categories</h4>
-            <p><b><%=@categories.count %></b></p>
+        <div class="col-md-6 col-lg-3">
+          <div class="widget-small danger coloured-icon">
+            <i class="icon fa fa-star fa-3x"></i>
+              <div class="info">
+                <h4>Tags</h4>
+                  <h4><b><%=@tags.count %></b></h4>
+              </div>
           </div>
         </div>
       </div>
-      <div class="col-md-6 col-lg-3">
-        <div class="widget-small danger coloured-icon">
-          <i class="icon fa fa-star fa-3x"></i>
-            <div class="info">
-              <h4>Tags</h4>
-                <h4><b><%=@tags.count %></b></h4>
-            </div>
-        </div>
-      </div>
-    </div>
     <div class="row">
-      <div class="col-md-6">
-        <div class="tile">
-          <h3 class="tile-title">Recent Activities</h3>
-          <center>
-            <%= image_tag("piechart.png") %><br>
-          </center>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="tile">
-          <h3 class="tile-title"> Requests </h3>
-          <div class="embed-responsive embed-responsive-16by9">
-            <canvas class="embed-responsive-item" id="pieChartDemo"></canvas>
+      <div class="col-xl-6">
+          <div class="card mb-4">
+              <div class="card-header">
+                  <i class="fas fa-chart-area me-1"></i>
+                  Chart 
+              </div>
+              <div class="card-body"><canvas id="myAreaChart" width="100%" height="40"></canvas></div>
           </div>
-        </div>
+      </div>
+      <div class="col-xl-6">
+          <div class="card mb-4">
+              <div class="card-header">
+                  <i class="fas fa-chart-bar me-1"></i>
+                  Bar Chart 
+                    <%= javascript_pack_tag 'chart-area-demo', 'data-turbolinks-track': 'reload' %>
+
+              </div>
+              <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
+          </div>
       </div>
     </div>
   </main>
+</div>
