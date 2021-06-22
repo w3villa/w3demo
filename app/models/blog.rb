@@ -14,6 +14,7 @@ class Blog < ApplicationRecord
 	belongs_to :category
 
 	has_many :blog_tags 
+  has_many :comments
 	has_many :tags, through: :blog_tags
   has_one_attached :image
   has_rich_text :body

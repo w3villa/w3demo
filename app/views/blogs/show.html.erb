@@ -11,6 +11,23 @@
       <h5> <strong>Tag: </strong>
         <%= @blog.tag_list%>
       </h5>
+
+      <div class="card my-1">
+      <div class="card-body">
+        <%= render @blog.comments %>
+       <p class="font-weight-bold">Comments</p>
+        <%= form_with(model: [@blog, @blog.comments.build]) do |f| %>
+         <div class="form-group">
+         <%= f.label 'New comment' %>
+        <%= f.text_area :body, class: 'form-control' %>
+        </div>
+         <%= f.submit 'Submit', class: 'btn btn-primary' %>
+
+        <% end %>
+        </div>
+
+        </div>
+        
         <p><%= @blog.body %></p>
           <% if user_signed_in? && current_user == @blog.user %>
             <span><%= link_to 'Edit', edit_blog_path(@blog) %></span>
