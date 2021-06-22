@@ -11,6 +11,8 @@
       <small>Category:<%= @blog.category.try(:name) %></small><br>
       <small> BY:<%= @blog.user.email %></small><br>
       <small>Tags:<%= @blog.tag_list%></small>
+      
+    
 
        <% if ((user_signed_in? && current_user == @blog.user) or (user_signed_in? &&current_user.role== "ADMIN")) %>
            <%= link_to 'Edit', edit_blog_path(@blog), class: "btn" %>
@@ -18,7 +20,22 @@
         <%= link_to 'Back', blogs_path , class: "btn" %>               
        
       <p><%= @blog.body %></p>
+      <div class="card my-1">
+          <div class="card-body">
+           <%= render @blog.comments %>
+            <p class="font-weight-bold">Comments</p>
+            <%= form_with(model: [@blog, @blog.comments.build]) do |f| %>
+              <div class="form-group">
+                <%= f.label 'New comment' %>
+                <%= f.text_area :body, class: 'form-control' %>
+              </div>
+              <%= f.submit 'Submit', class: 'btn btn-primary' %>
+            <% end %>
+          </div>
+        </div>
+        
   </div>
 </div>
+
 
 

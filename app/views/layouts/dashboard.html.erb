@@ -30,7 +30,7 @@
           </li>
         <% if user_signed_in? && current_user.role =="ADMIN" %>  
           <li class="nav-item">
-           <%= link_to "Admin Panel",  admin_root_path , class: "text-dark"%>
+           <%= link_to "Blogs",  root_path , class: "text-dark"%>
           </li>
          <% end %>
           <% if user_signed_in? %>

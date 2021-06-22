@@ -28,23 +28,34 @@
       <%= form.select :category_id, Category.all.map {|c|[c.name, c.id]}, class: "form-control" %>
   </div><br/>
   
-    <div class="d-flex">
-    <% @blog.tags.each_with_index do |tag, i| %> 
-    <div class="mr-2">
-      <input type="hidden" value="<%= tag.id %>" name="blog[tags_attributes][<%= i %>][id]">
-      <label>Tag:<%= i +1 %> <%=tag.name  %> </label>
-      <input type="hidden" value="false" name="blog[tags_attributes][<%= i %>][_destroy]">
-      <input type="checkbox" value="true" name="blog[tags_attributes][<%= i %>][_destroy]">
+   <div class="form-row">
+    <div class="formlable">
+      <label>Tags: </label>
     </div>
-  <% end %>
-</div>
-<label>Create New Tag: <input type="text" value="" name="blog[tags_attributes][<%= @blog.tags.count %>][name]"></label>
+    <div class="formfield">
+      <% Tag.all.each_with_index do |tag, i| %> 
+        <% blog_tag = @blog.blog_tags.where(tag_id: tag.id).last %>
+        <div class="mr-2">
+          <input type="hidden" value="<%= blog_tag.try(:id) %>" name="blog[blog_tags_attributes][<%= i %>][id]">
+          <input type="hidden" value="<%= tag.try(:id) %>" name="blog[blog_tags_attributes][<%= i %>][tag_id]">
+          <label>
+            <%=tag.name  %> 
+            <input type="hidden" value="true" name="blog[blog_tags_attributes][<%= i %>][_destroy]">
+            <input type="checkbox" value="false" name="blog[blog_tags_attributes][<%= i %>][_destroy]" <%= 'checked=true' if blog_tag.present? %>>
+          </label>
+        </div>
+      <% end %>
+    </div>
+  </div>
   <br/>
-  <div class="field">
-       <%= form.label :user_id  %><br>
-       <%= form.select :user_id, User.all.map {|c|[c.email, c.id]}, class: "form-control" %>
-  </div>  
-
+  <div class="form-row">
+    <div class="formlable">
+      <%= form.label :user_id  %>
+    </div>
+    <div class="formfield">
+      <%= current_user.name %>
+    </div>
+  </div> 
   
 
   <div class="action">
