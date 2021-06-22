@@ -20,6 +20,7 @@
         <%= link_to 'Back', blogs_path , class: "btn" %>               
        
       <p><%= @blog.body %></p>
+      <% if (user_signed_in?)%>
       <div class="card my-1">
           <div class="card-body">
            <%= render @blog.comments %>
@@ -33,7 +34,7 @@
             <% end %>
           </div>
         </div>
-        
+        <% end %>
   </div>
 </div>
 
