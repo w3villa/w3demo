@@ -7,12 +7,12 @@
     end
 
     def create
-      @comment = @commentable.comments.new(comment_params)
 
+      @comment = @commentable.comments.new(comment_params)
       if @comment.save
-        redirect_to :back, notice: 'Your comment was successfully posted!'
+        redirect_to :blogs, notice: 'Your comment was successfully posted!'
       else
-        redirect_to :back, notice: "Your comment wasn't posted!"
+        redirect_to :blogs, notice: "Your comment wasn't posted!"
       end
     end
 
