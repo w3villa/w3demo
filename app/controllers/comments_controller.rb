@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: %i[ show edit update destroy ]
+   
 
   # GET /comments or /comments.json
   def index
@@ -68,4 +69,6 @@ class CommentsController < ApplicationController
     def comment_params
       params.require(:comment).permit(:body, :blog_id, :parent_id)
     end
+
+   
 end
