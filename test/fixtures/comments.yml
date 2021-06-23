@@ -2,10 +2,10 @@
 
 one:
   body: MyText
-  blog_id: 1
-  parent_id: 1
+  commentable: one
+  commentable_type: Commentable
 
 two:
   body: MyText
-  blog_id: 1
-  parent_id: 1
+  commentable: two
+  commentable_type: Commentable
