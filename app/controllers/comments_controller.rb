@@ -1,33 +1,44 @@
- class CommentsController < ApplicationController
+class CommentsController < ApplicationController
+  before_action :set_comment, only: %i[ show edit update destroy ]
 
-  before_action :find_commentable
+  # GET /comments or /comments.json
+  def index
+    @comments = Comment.all
+  end
+
+  # GET /comments/1 or /comments/1.json
+  def show
+  end
+
+  # GET /comments/new
+  def new
+    @blog = Blog.friendly.find(params[:blog_id])
+    @comment = @blog.comments.new(parent_id: params[:parent_id,])
+  end
+
+  # GET /comments/1/edit
+  def edit
+  end
+
+  # POST /comments or /comments.json
+  def create
+    @blog = Blog.friendly.find(params[:blog_id])
+    @comment = @blog.comments.new(comment_params)
 
 
-     def index
-      @comments = Comment.all
-     end
-    def new
-      @comment = Comment.new
-    end
-    def show
-      @comment = Comment.find(params[:id])
-    end
-    def edit
-      @comment = Comment.find(params[:id])
-    end
-
-
-    def create
-
-      @comment = @commentable.comments.new(comment_params)
+    respond_to do |format|
       if @comment.save
-        redirect_to :blogs, notice: 'Your comment was successfully posted!'
+        format.html { redirect_to @comment, notice: "Comment was successfully created." }
+        format.json { render :show, status: :created, location: @comment }
       else
-        redirect_to :blogs, notice: "Your comment wasn't posted!"
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
     end
+  end
 
-    def update
+  # PATCH/PUT /comments/1 or /comments/1.json
+  def update
     respond_to do |format|
       if @comment.update(comment_params)
         format.html { redirect_to @comment, notice: "Comment was successfully updated." }
@@ -41,7 +52,6 @@
 
   # DELETE /comments/1 or /comments/1.json
   def destroy
-    @comment = Comment.find(params[:id])
     @comment.destroy
     respond_to do |format|
       format.html { redirect_to comments_url, notice: "Comment was successfully destroyed." }
@@ -49,15 +59,15 @@
     end
   end
 
-    private
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_comment
+      @comment = Comment.find(params[:id])
+    end
 
+    # Only allow a list of trusted parameters through.
     def comment_params
-      params.require(:comment).permit(:body)
+      params.require(:comment).permit(:body, :blog_id, :parent_id)
     end
+end 
 
-    def find_commentable
-
-      @commentable = Comment.find_by_id(params[:comment_id]) if params[:comment_id]
-      @commentable = Blog.friendly.find_by_id(params[:blog_id]) if params[:blog_id]
-    end
-  end
