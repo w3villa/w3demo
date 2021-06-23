@@ -11,6 +11,15 @@ Rails.application.routes.draw do
   # get "blogs/new", to: "blogs#new"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   # get "/users"
+
+      resources :blogs do
+          resources :comments
+      end
+
+      resources :comments do
+          resources :comments
+      end
+      
   namespace :admin do 
     root to: "dashboards#index"
     resources :users
