@@ -25,6 +25,9 @@
         <% if  (user_signed_in? &&current_user.role== "ADMIN")%>
           <ul class="nav justify-content-end">
             <li class="nav-item">
+             <%= link_to "Admin Panel",  admin_root_path %></h1> 
+            </li>
+            <!--<li class="nav-item">
              <%= link_to "New Category",  new_category_path %></h1> 
             </li>
              <li class="nav-item">
@@ -35,7 +38,7 @@
             </li>
              <li class="nav-item">
              <%= link_to "All Tags",  tags_path %></h1> 
-            </li>
+            </li>-->
           </ul>
         <% end %>
     </div>
