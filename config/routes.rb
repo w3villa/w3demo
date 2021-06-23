@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   resources :blogs do
     resources :comments
-  end
+    end
   get "blogs/categories/:category_slug", to: "blogs#show_category", as: :show_blogs_category
   get "blogs/tags/:id", to: "blogs#show_tag", as: :blogs_tags
   root to: "blogs#index"

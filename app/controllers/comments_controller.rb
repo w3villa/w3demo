@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
 
   # GET /comments/new
   def new
-     @blog = Blog.friendly.find(params[:blog_id])
+    @blog = Blog.friendly.find(params[:blog_id])
     @comment = @blog.comments.new(parent_id: params[:parent_id])
   end
 
@@ -20,14 +20,14 @@ class CommentsController < ApplicationController
   def edit
   end
 
-  # POST /comments or /comments.json
+  # blog /comments or /comments.json
   def create
     @blog = Blog.friendly.find(params[:blog_id])
     @comment = @blog.comments.new(comment_params)
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to @comment, notice: "Comment was successfully created." }
+        format.html { redirect_to @blog, notice: "Comment was successfully created." }
         format.json { render :show, status: :created, location: @comment }
       else
         format.html { render :new, status: :unprocessable_entity }
