@@ -10,6 +10,7 @@
   <div> 
   <div class="content">
       <small>Category:<%= @blog.category.try(:name) %></small><br>
+      <small>Tags:<%= @blog.tag_list%></small><br>
       <small> BY:<%= @blog.user.email %></small><br>
 
        <% if ((user_signed_in? && current_user == @blog.user) or (user_signed_in? &&current_user.role== "ADMIN")) %>
