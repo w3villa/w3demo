@@ -14,9 +14,10 @@ class CommentsTest < ApplicationSystemTestCase
     visit comments_url
     click_on "New Comment"
 
-    fill_in "Blog", with: @comment.blog_id
     fill_in "Body", with: @comment.body
-    fill_in "Parent", with: @comment.parent_id
+    fill_in "Commentable", with: @comment.commentable_id
+    fill_in "Commentable type", with: @comment.commentable_type
+    fill_in "Parent", with: @comment.parent
     click_on "Create Comment"
 
     assert_text "Comment was successfully created"
@@ -27,9 +28,10 @@ class CommentsTest < ApplicationSystemTestCase
     visit comments_url
     click_on "Edit", match: :first
 
-    fill_in "Blog", with: @comment.blog_id
     fill_in "Body", with: @comment.body
-    fill_in "Parent", with: @comment.parent_id
+    fill_in "Commentable", with: @comment.commentable_id
+    fill_in "Commentable type", with: @comment.commentable_type
+    fill_in "Parent", with: @comment.parent
     click_on "Update Comment"
 
     assert_text "Comment was successfully updated"
