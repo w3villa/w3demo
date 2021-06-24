@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
       if @comment.save
         redirect_to :root, notice: 'Your comment was successfully posted!'
       else
-        redirect_to :back, notice: "Your comment wasn't posted!"
+        redirect_to :root, notice: "Your comment wasn't posted!"
       end
     end
 
