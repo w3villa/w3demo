@@ -1,6 +1,4 @@
-@charset "UTF-8";
 
-*,
 *::before,
 *::after {
   -webkit-box-sizing: border-box;
@@ -180,7 +178,7 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 
 .app-sidebar__toggle:focus, .app-sidebar__toggle:hover {
   color: #fff;
-  background-color: #00635a;
+  background-color: skyblue;
   text-decoration: none;
 }
 
@@ -213,7 +211,7 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 }
 
 .app-nav__item:hover, .app-nav__item:focus {
-  background: rgba(0, 0, 0, 0.1);
+  background: skyblue;
   color: #f6f6f6;
 }
 
@@ -379,13 +377,17 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
   color: #fff;
 }
 
-.app-menu__item.active, .app-menu__item:hover, .app-menu__item:focus {
-  background:  #0a83c0 ;
-
-  text-decoration: none;
-  color: #fff;
-  font-weight:800;
+.app-menu__item button{
+  width: 150px;
 }
+
+.app-menu__item  button:focus{
+     background-color: skyblue;
+     padding: 10px;
+     color: white;
+
+}
+
 
 .app-menu__icon {
   -webkit-box-flex: 0;
