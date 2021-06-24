@@ -23,10 +23,3 @@ Things you may want to cover:
 
 * ...
 
-  <script type="text/javascript">
-  document.getElementById('nested-comment').style.display= "none"
-
-  function reply(){
-     document.getElementById('nested-comment').style.display= "block"
-    }
-  </script>
