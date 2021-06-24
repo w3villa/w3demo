@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
       @comment = @commentable.comments.new(comment_params)
 
       if @comment.save
-        redirect_to :root, notice: 'Your comment was successfully posted!'
+        redirect_to :blogs, notice: 'Your comment was successfully posted!'
       else
         redirect_to :back, notice: "Your comment wasn't posted!"
       end
@@ -24,6 +24,6 @@ class CommentsController < ApplicationController
 
     def find_commentable
       @commentable = Comment.find_by_id(params[:comment_id]) if params[:comment_id]
-      @commentable = Blog.find_by_id(params[:blog_id]) if params[:blog_id]
+      @commentable = Blog.friendly.find(params[:blog_id]) if params[:blog_id]
     end
   end
