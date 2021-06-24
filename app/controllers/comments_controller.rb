@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-
+  before_action :set_comment, only: %i[ destroy ]
   before_action :find_commentable
 
     def new
@@ -16,10 +16,22 @@ class CommentsController < ApplicationController
       end
     end
 
+    def destroy
+    @comment.destroy
+    respond_to do |format|
+      format.html { redirect_to :root, notice: "Comment was successfully destroyed." }
+      format.json { head :no_content }
+    end
+    end
+
     private
 
     def comment_params
       params.require(:comment).permit(:body)
+    end
+
+    def set_comment
+      @comment = Comment.find(params[:id])
     end
 
     def find_commentable
