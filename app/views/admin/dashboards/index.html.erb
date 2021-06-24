@@ -1,68 +1,368 @@
-<%= render 'sidebar' %>
-  <main class="app-content">
+# sidebar
+
+<aside class="app-sidebar">
+      <div class="app-sidebar__user">
+        <center>
+          <p class="app-sidebar__user-name">
+            <%= image_tag("user.png", style: "height:50%; width:50%;") %><br>
+              <b>Admin:- <%= @admin %></b>
+          </p>    
+        </center>
+      </div>
+      <ul class="app-menu">
+        <li class="app-menu__item">
+          <i class="app-menu__icon fa fa-dashboard"></i>
+            <span class="app-menu__label" > 
+                  <button class="btn btn-outline-primary" onclick="show1()">Dashboard</button >
+            </span>
+        </li>
+        <li class="app-menu__item">
+          <i class="app-menu__icon fa fa-files-o"></i>
+            <span class="app-menu__label"> 
+                 <button class="btn btn-outline-primary" onclick="show2()">All Blogs</button>
+            </span>
+        </li>
+        
+        <li class="app-menu__item">
+          <i class="app-menu__icon fa fa-tag"></i>
+            <span class="app-menu__label"> 
+                 <button class="btn btn-outline-primary" onclick="show3()">All Tags</button>
+            </span>
+        </li>
+
+        <li class="app-menu__item">
+          <i class="app-menu__icon fa fa-files-o"></i>
+            <span class="app-menu__label"> 
+              <button class="btn btn-outline-primary" onclick="show4()">All Categories</button>
+            </span>
+        </li>
+
+        <li class="app-menu__item">
+          <i class="app-menu__icon fa fa-files-o"></i>
+            <span class="app-menu__label"> 
+              <button class="btn btn-outline-primary" onclick="show5()">All Users</button>
+            </span>
+        </li>
+      </ul>
+</aside>
+
+<div>
+  <div id="div-1">
+    
+        <main class="app-content">
+        <div class="app-title">
+          <div>
+            <h1><i class="fa fa-dashboard"></i> Dashboard</h1>
+            <p>Welcome To Dashboard!!</p>
+          </div>
+          <ul class="app-breadcrumb breadcrumb">
+            <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+            <li class="breadcrumb-item"><a>Dashboard</a></li>
+          </ul>
+        </div>
+        <div class="row">
+          <div class="col-md-6 col-lg-3">
+            <div class="widget-small primary coloured-icon">
+              <i class="icon fa fa-users fa-3x"></i>
+                <div class="info">
+                  <h4>Users</h4>
+                    <p><b><%=@users.count %></b></p>
+                </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="widget-small info coloured-icon">
+              <i class="icon fa fa-thumbs-o-up fa-3x"></i>
+                <div class="info">
+                  <h4>Blogs</h4>
+                    <p><b><%=@blogs.count %></b></p>
+                </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="widget-small warning coloured-icon"><i class="icon fa fa-files-o fa-3x"></i>
+              <div class="info">
+                <h4>Categories</h4>
+                <p><b><%=@categories.count %></b></p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="widget-small danger coloured-icon">
+              <i class="icon fa fa-star fa-3x"></i>
+                <div class="info">
+                  <h4>Tags</h4>
+                    <h4><b><%=@tags.count %></b></h4>
+                </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="tile">
+              <h3 class="tile-title">Recent Activities</h3>
+              <center>
+                <%= image_tag("piechart.png") %><br>
+              </center>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="tile">
+              <h3 class="tile-title"> Requests </h3>
+              <div class="embed-responsive embed-responsive-16by9">
+                <canvas class="embed-responsive-item" id="pieChartDemo"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+  </div>
+
+  <div id="div-2">
+           
+    <main class="app-content">
+      <div class="app-title">
+        <div>
+          <h1>
+            <i class="fa fa-dashboard"></i> Blogs
+            <hr>
+          </h1>
+          <p><%= link_to 'Create New Blog', new_blog_path , class:"btn btn-primary icon-btn"%>
+          </p>   
+        </div>
+        <ul class="app-breadcrumb breadcrumb">
+          <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+          <li class="breadcrumb-item"><a >All Blogs</a></li>
+        </ul>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="tile">
+            <h3 class="tile-title"> All Blogs </h3>
+              <table class="table table-hover table-bordered">
+                <thead>
+                  <tr>
+                    <th>Sr.No</th>
+                    <th>Title</th>
+                    <th>Body</th>
+                    <th>Tag</th>
+                    <th colspan="3"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @blogs.each do |blog| %>
+                    <tr>
+                      <td><%= blog.id %></td>
+                      <td><%= blog.title %></td>
+                      <td><%= truncate(strip_tags(blog.rich_text_body.to_s), length: 50) %></td>
+                      <td><%= blog.tag_list%></td>
+                      <td><%= link_to 'Show', blog ,class: "btn btn-outline-info" %></td>
+                      <td><%= link_to 'Edit', edit_blog_path(blog),class: "btn btn-outline-secondary" %></td>
+                      <td><%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } ,class: "btn btn-outline-danger"%></td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>     
+          </div>
+        </div>
+      </div>
+    </main>
+
+  </div>
+
+<div id="div-3">
+    <main class="app-content">
     <div class="app-title">
       <div>
-        <h1><i class="fa fa-dashboard"></i> Dashboard</h1>
-        <p>Welcome To Dashboard!!</p>
+        <h1>
+          <i class="fa fa-dashboard"></i> Tags
+          <hr>
+        </h1>
+        <p><%= link_to 'Create New tag', new_tag_path , class:"btn btn-primary icon-btn"%>
+        </p>   
       </div>
       <ul class="app-breadcrumb breadcrumb">
         <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-        <li class="breadcrumb-item"><a>Dashboard</a></li>
+        <li class="breadcrumb-item"><a >Tags</a></li>
       </ul>
     </div>
     <div class="row">
-      <div class="col-md-6 col-lg-3">
-        <div class="widget-small primary coloured-icon">
-          <i class="icon fa fa-users fa-3x"></i>
-            <div class="info">
-              <h4>Users</h4>
-                <p><b><%=@users.count %></b></p>
-            </div>
-        </div>
-      </div>
-      <div class="col-md-6 col-lg-3">
-        <div class="widget-small info coloured-icon">
-          <i class="icon fa fa-thumbs-o-up fa-3x"></i>
-            <div class="info">
-              <h4>Blogs</h4>
-                <p><b><%=@blogs.count %></b></p>
-            </div>
-        </div>
-      </div>
-      <div class="col-md-6 col-lg-3">
-        <div class="widget-small warning coloured-icon"><i class="icon fa fa-files-o fa-3x"></i>
-          <div class="info">
-            <h4>Categories</h4>
-            <p><b><%=@categories.count %></b></p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6 col-lg-3">
-        <div class="widget-small danger coloured-icon">
-          <i class="icon fa fa-star fa-3x"></i>
-            <div class="info">
-              <h4>Tags</h4>
-                <h4><b><%=@tags.count %></b></h4>
-            </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-6">
+      <div class="col-md-12">
         <div class="tile">
-          <h3 class="tile-title">Recent Activities</h3>
-          <center>
-            <%= image_tag("piechart.png") %><br>
-          </center>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="tile">
-          <h3 class="tile-title"> Requests </h3>
-          <div class="embed-responsive embed-responsive-16by9">
-            <canvas class="embed-responsive-item" id="pieChartDemo"></canvas>
-          </div>
+          <h3 class="tile-title"> All Tags </h3>
+            <table class="table table-hover table-bordered">
+              <thead>
+                <tr>
+                  <th>Sr.No</th>
+                  <th>Body</th>
+              
+                </tr>
+              </thead>
+              <tbody>
+                <% @tags.each do |tag| %>
+                  <tr>
+                    <td><%= tag.id %></td>
+                    <td><%= tag.name%></td>
+                    <td><%= link_to 'Show', tag ,class: "btn btn-outline-primary" %>
+                    </td>
+                    <td><%= link_to 'Edit', edit_tag_path(tag),class: "btn btn-outline-secondary"   %></td>
+                    <td> <%= link_to 'Destroy', tag, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-danger"  %>  </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>     
         </div>
       </div>
     </div>
   </main>
+</div>
+<div id="div-4">
+  <main class="app-content">
+    <div class="app-title">
+      <div>
+        <h1>
+          <i class="fa fa-dashboard"></i> Category
+          <hr>
+        </h1>
+        <p><%= link_to 'Create New Category', new_category_path , class:"btn btn-primary icon-btn"%>
+        </p>   
+      </div>
+      <ul class="app-breadcrumb breadcrumb">
+        <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+        <li class="breadcrumb-item"><a > Categories</a></li>
+      </ul>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="tile">
+          <h3 class="tile-title"> All Category </h3>
+            <table class="table table-hover table-bordered">
+              <thead>
+                <tr>
+                  <th>Sr.No</th>
+                  <th>Body</th>
+               
+                </tr>
+              </thead>
+              <tbody>
+                <% @categories.each do |category| %>
+                  <tr>
+                    <td><%= category.id %></td>
+                    <td><%= category.name%></td>
+                    <td><%= link_to 'Show', category ,class: "btn btn-outline-primary" %>
+                    </td>
+                    <td><%= link_to 'Edit', edit_category_path(category),class: "btn btn-outline-secondary"   %></td>
+                    <td> <%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-danger"  %>  </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>     
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<div id="div-5">
+  <main class="app-content">
+    <div class="app-title">
+      <div>
+        <h1>
+          <i class="fa fa-dashboard"></i> Users
+          <hr>
+        </h1>
+        <p><%= link_to 'Create New User',  new_admin_user_path , class:"btn btn-primary icon-btn"%>
+        </p>   
+      </div>
+      <ul class="app-breadcrumb breadcrumb">
+        <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+        <li class="breadcrumb-item"><a >Users</a></li>
+      </ul>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="tile">
+          <h3 class="tile-title"> Users </h3>
+            <table class="table table-hover table-bordered">
+              <thead>
+                <tr>
+                  <th>Sr.No</th>
+                  <th>Body</th>
+               
+                </tr>
+              </thead>
+              <tbody>
+                <% @users.each do |user| %>
+                  <tr>
+                    <td><%= user.id %></td>
+                    <td><%= user.name%></td>
+                    <td><%= link_to 'Show', admin_user_path(user) ,class: "btn btn-outline-primary" %>
+                    </td>
+                    <td><%= link_to 'Edit', edit_admin_user_path(user),class: "btn btn-outline-secondary"   %></td>
+                    <td> <%= link_to 'Destroy', admin_user_path(user), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-danger"  %>  </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>     
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script type="text/javascript">
+    
+     const div1 =  document.getElementById('div-1').style
+     const div2 =  document.getElementById('div-2').style
+     const div3 =  document.getElementById('div-3').style
+     const div4 =  document.getElementById('div-4').style
+     const div5 =  document.getElementById('div-5').style
+    
+     div1.display="block"
+     div2.display="none"
+     div3.display="none"
+     div4.display="none"
+     div5.display="none"
+  
+    function show1(){
+       div1.display="block"
+       div2.display="none"
+       div3.display="none"
+       div4.display="none"
+       div5.display="none"
+    }
+    
+    function show2(){
+      div1.display="none"
+      div2.display="block"
+      div3.display="none"
+      div4.display ="none"
+      div5.display="none"
+   }
+   
+   function show3(){
+      div1.display="none"
+      div2.display="none"
+      div3.display="block"
+      div4.display ="none"
+      div5.display="none"
+ }  
+
+    function show4(){
+      div1.display="none"
+      div2.display="none"
+      div3.display="none"
+      div4.display ="block"
+      div5.display="none"
+ }
+
+ function show5(){
+      div1.display="none"
+      div2.display="none"
+      div3.display="none"
+      div4.display ="none"
+      div5.display="block"
+ }
+
+</script>
