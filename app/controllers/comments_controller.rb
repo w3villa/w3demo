@@ -36,6 +36,6 @@ class CommentsController < ApplicationController
 
     def find_commentable
       @commentable = Comment.find_by_id(params[:comment_id]) if params[:comment_id]
-      @commentable = Blog.find_by_id(params[:blog_id]) if params[:blog_id]
+      @commentable = Blog.friendly.find(params[:blog_id]) if params[:blog_id]
     end
   end
