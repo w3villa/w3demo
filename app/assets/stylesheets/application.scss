@@ -1,0 +1,252 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ 
+ *= require_self
+ */
+ @import "trix/dist/trix";
+@import "./actiontext.scss";
+
+.navbar{
+   padding: 20px;
+}
+.navbar-logo{
+   font-size: 40px;
+   color: white;
+   text-decoration: none;
+   font-weight: bold;
+}
+.navbar-nav{
+  margin-left: auto;
+} 
+.navbar-nav .nav-link{
+   font-weight: bold;
+   color: white;
+   font-size: 20px;
+}
+
+.header{
+   height: 500px;
+   width: 100%;
+   position: absolute;
+   top: 0px;
+   z-index: -1;
+   text-align: center;
+}
+.header2{
+  height: 80px;
+  position: absolute;
+  top: 0px;
+  z-index: -1;
+}
+.header-text{
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  text-align: center;
+  font-size: 50px;
+  color: white;
+  text-decoration: none;
+  font-weight: bolder;
+}
+
+
+.header img{
+   width: 100%;
+   height: 500px;
+}  
+  
+  #main{
+    padding: 50px;
+    margin-top: 400px;
+  }
+  .blog-container{
+    padding: 20px;
+    box-shadow: 0px 0px 1px grey;
+    margin-bottom: 40px;
+  }
+  #main .blog-img{
+     height: 200px;
+  }
+  .blog-container .btn{
+     border: 1px solid blue;
+     float: right;
+     margin-left: 20px;
+  }
+  
+  .column2{
+    //  background-color: aqua;
+     padding-left: 100px;
+  }
+  .column2 .categories{
+      width: 350px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 20px;
+  }  
+  
+  /*  show full blog   */
+
+#show-blog{
+  text-align: center;
+}
+
+#show-blog .image-container{
+  height: 600px;
+  width: 800px;
+  margin: 50px auto 20px ;
+}
+
+#show-blog .image-container .content{
+  text-align: left;
+}
+
+
+.form{
+  border: 1px solid  #bdc7d0;
+  box-shadow: 2px 2px 10px 2px #eaedf0;
+  border-radius:10px;
+  width: 75%;
+  margin:40px auto;
+  padding:30px 30px;
+  h2{
+    color:#253055;
+    text-decoration:underline;
+    text-align: center;    
+  }
+  .formrow{
+    display: flex;
+  }
+  .formlable{
+    margin: 1px 8px;
+    padding: 5px;
+    color:#0f1c4b;    
+    font-weight: bold;
+    font-size: 19px;
+  }
+ .formfield{
+    margin:5px;
+    width:80%;
+  }
+  .action{
+    text-align:center;
+    margin-top:10px;
+  }
+  .btn-submit{
+    background-color: #253055;
+    color: #fff;
+    font-weight: bold;
+    padding: 5px 12px;
+    border-style: none;
+    border-radius:5px;
+    margin: 12px 12px;
+  }
+}
+
+.categoryshow{
+  margin:5rem;
+  padding:20px;
+  width:50%;
+  box-shadow: 1px 1px 1px 1px #d5d5da;
+}
+
+.signin{
+  border: 1px solid  #bdc7d0;
+  box-shadow: 2px 2px 10px 2px #eaedf0;
+  border-radius:10px;
+  width: 55%;
+  margin:40px auto;
+  padding:30px 30px;
+  .action{
+    text-align:center;
+  }
+  .submit{
+    background-color: #253055;
+    width:80%;
+    color: #fff;
+    font-weight: bold;
+    padding: 6px 15px;
+    border-style: none;
+    border-radius:5px;
+    margin: 8px 15px 3px;
+  }
+}
+
+.forgotlink{
+  color:  #9d0018 ;
+  font-weight:lighter;
+}
+
+.link{
+  color: #253055; 
+  font:600;
+}
+
+h1{
+ color: #253055;
+  text-align: center; 
+  font-weight:700;
+  text-decoration:underline;
+}
+
+h2{
+  color: #253055;
+  font-weight:700;
+  @media(max-width:798px){
+    font-size:25px;
+  }
+}
+
+h5{
+  color: #253055;
+  padding: 10px 5px;
+}
+
+.heading{
+  color: #253055;  
+}
+
+.icon{
+  color:  #001b52;
+  padding-right:8px;
+}
+
+p{
+  font-size: 95%;
+  line-height: 25px; 
+  @media(max-width:798px){
+    font-size: 80%;
+    line-height: 15px; 
+    float:left;  
+  }
+}
+
+small{
+  color:#253055;
+}
+
+span{
+  margin:5px;
+}
+
+.btn{
+  float: right;
+  margin-bottom:5px;
+}
+
+
+
+
+// comments
+.reply-btn{
+   float: left;
+}

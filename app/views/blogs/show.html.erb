@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<div class="container-fluid header2 bg-dark"> 
+</div>
+<div class="container" id="show-blog">
+  <h2><%= @blog.title %></h2>
+
+  <div class="image-container">
+   <%= image_tag(@blog.image, class: "img-fluid") %>
+  <div> 
+  <div class="content">
+      <small>Category:<%= @blog.category.try(:name) %></small><br>
+      <small> BY:<%= @blog.user.email %></small><br>
+
+       <% if ((user_signed_in? && current_user == @blog.user) or (user_signed_in? &&current_user.role== "ADMIN")) %>
+           <%= link_to 'Edit', edit_blog_path(@blog), class: "btn" %>
+       <% end %>
+        <%= link_to 'Back', blogs_path , class: "btn" %>               
+       
+      <p><%= @blog.body %></p>
+     
+      <h3>Comments</h3>
+
+      <%= form_for [@blog, Comment.new] do |f| %>
+      <%= f.text_field :body, placeholder: "a new comment", class: "form-control" %>
+      <%= f.submit "Comment", class: "btn btn-info" %>
+    <% end %>
+    <br>
+    <ul>
+      <%= render @blog.comments %>
+    </ul>
+
+
+
+  </div>
+ 
+</div>
+

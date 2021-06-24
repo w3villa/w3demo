@@ -1,0 +1,55 @@
+<p id="notice"><%= notice %></p>
+
+<div class="container-fluid header">
+     <%= image_tag('home-bg.jpg', class: "img-fluid") %>   
+     <h1 class="header-text">Blogs from tag: <%= @category.name %></h1>
+</div>
+<div class="container-fluid" id="main">
+
+    <div class="row mt-5" >
+        
+        <!-- column1 -->
+       
+         <div class="col-md-8">
+
+          <% @blogs.to_a.reverse.each do |blog| %>
+           <div class="row  blog-container">
+             <div class="col-md-4">
+                <%= image_tag(blog.try(:image), class: "blog-img img-fluid") %> 
+             </div> 
+             <div class="col-md-8">
+                <div class="container-fluid" id="article-card">
+                    <div class="container article-detail"> 
+                      <h3><%= blog.title %></h3>
+                      <small> <%= blog.user.email %></small><br>
+                      <small>Tags:<%= blog.tag_ids%></small>
+                      <p><%= truncate(strip_tags(blog.rich_text_body.to_s), length: 150)  %></p>
+                       <% if ((user_signed_in? && current_user == blog.user) or (user_signed_in? &&current_user.role== "ADMIN")) %>
+                       <%= link_to 'Edit', edit_blog_path(blog), class: "btn" %>
+                      <% end %>
+                      <%= link_to 'read more', blog, class: "btn" %>
+                    </div>  
+                </div>  
+             </div> 
+           </div>   
+          <% end %>  
+         </div>
+
+        <!-- column2 start-->
+
+         <div class="col-md-4 column2">
+
+         <%= render partial: "categories", locals: {categories: @categories} %>
+         <%= render partial: "tag", locals: {tags: @tags} %>
+
+
+        </div>
+
+        <!--column2 end  -->
+
+    </div>
+
+
+</div>
+
+     

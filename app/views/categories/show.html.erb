@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+<div class="categoryshow">
+	<h5>
+		<strong>
+			Category:
+		</strong>
+			<%= @category.name %>
+	</h5>
+	<span>
+		<strong><%= link_to 'Edit', edit_category_path(@category), class: "link" %></strong>
+	</span> |
+	<span><%= link_to 'Back', categories_path,class: "link" %></span>
+</div>
+
+
+
+
+
+
+
