@@ -1,42 +1,77 @@
-<aside class="app-sidebar">
-      <div class="app-sidebar__user">
-        <center>
-          <p class="app-sidebar__user-name">
-            <%= image_tag("user.png", style: "height:50%; width:50%;") %><br>
-              <b>Admin:- <%= @admin %></b>
-          </p>    
-        </center>
-      </div>
-      <ul class="app-menu">
-         <li class="app-menu__item active">
-          <i class="app-menu__icon fa fa-dashboard"></i>
-            <span class="app-menu__label">
-              <%= link_to "Dasboard" , admin_root_path  , class: "app-menu__label"%>
-            </span>
-        </li>
-        <li class="app-menu__item">
-          <i class="app-menu__icon fa fa-file-code-o"></i>
-            <span class="app-menu__label"> 
-              <%= link_to 'All Blogs',  admin_blogs_path ,  class: "app-menu__label"  %>
-            </span>
-        </li>
-        <li class="app-menu__item">
-          <i class="app-menu__icon fa fa-files-o"></i>
-            <span class="app-menu__label"> 
-              <%= link_to 'All Categories', admin_category_path,  class: "app-menu__label"  %>
-            </span>
-        </li>
-        <li class="app-menu__item">
-          <i class="app-menu__icon fa fa-tag"></i>
-            <span class="app-menu__label"> 
-              <%= link_to 'All Tags', admin_tag_path,  class: "app-menu__label"  %>
-            </span>
-        </li>
-        <li class="app-menu__item">
-          <i class="app-menu__icon fa fa-tag"></i>
-            <span class="app-menu__label"> 
-              <%= link_to 'All user', admin_users_path,  class: "app-menu__label"  %>
-            </span>
-        </li>     
-      </ul>
-    </aside>
+ <div id="layoutSidenav_nav">
+  <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+    <div class="sb-sidenav-menu">
+      <div class="nav">
+        <div class="sb-sidenav-menu-heading">
+          <b>Admin:- <%= @admin %></b>
+        </div>
+        <hr>
+        <a class="nav-link" href="/admin">
+          <div class="sb-nav-link-icon">
+            <i class="fas fa-tachometer-alt"></i>
+          </div>
+         Dashboard
+        </a>          
+        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+          <div class="sb-nav-link-icon">
+            <i class="fas fa-columns"></i>
+          </div>
+          Blogs
+          <div class="sb-sidenav-collapse-arrow">
+            <i class="fas fa-angle-down"></i>
+          </div>
+        </a>
+        <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+          <nav class="sb-sidenav-menu-nested nav">
+                 <%= link_to 'All Blogs',  admin_blogs_path ,  class:"nav-link"%>
+             <%= link_to 'New Blog',  new_blog_path ,  class:"nav-link"  %>
+          </nav>
+        </div>
+        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayout" aria-expanded="false" aria-controls="collapseLayout">
+          <div class="sb-nav-link-icon">
+            <i class="fas fa-file"></i>
+          </div>
+          Category
+          <div class="sb-sidenav-collapse-arrow">
+            <i class="fas fa-angle-down"></i>
+          </div>
+        </a>
+        <div class="collapse" id="collapseLayout" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+          <nav class="sb-sidenav-menu-nested nav">
+                  <%= link_to 'All Categories', admin_category_path,  class: "nav-link"  %>
+                      <%= link_to 'New Category',  new_category_path ,  class:"nav-link"  %>
+                      
+          </nav>
+        </div>
+        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapselayouts" aria-expanded="false" aria-controls="collapselayouts">
+          <div class="sb-nav-link-icon">
+            <i class="fas fa-tags"></i>
+          </div>
+          Tags
+          <div class="sb-sidenav-collapse-arrow">
+            <i class="fas fa-angle-down"></i>
+          </div>
+        </a>
+        <div class="collapse" id="collapselayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+          <nav class="sb-sidenav-menu-nested nav">
+                  <%= link_to 'All Tags', admin_tag_path,  class: "nav-link"  %>
+                      <%= link_to 'New Tag',  new_tag_path ,  class:"nav-link"  %>
+                      
+          </nav>
+        </div>
+        <a class="nav-link" href="/admin/users">
+          <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
+            Users
+        </a>
+        <a class="nav-link" href="#">
+          <div class="sb-nav-link-icon"><i class="fas fa-cog"></i></div>
+            settings
+        </a>      
+      </div> 
+    </div>   
+  </nav>
+</div>
+
+
+
+

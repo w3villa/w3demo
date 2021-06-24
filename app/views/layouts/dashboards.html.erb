@@ -8,46 +8,56 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'dashboard', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application'%>
-
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+   <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
 
   </head>
-  <body>
-
-       <!-- Navbar-->
-    <header class="app-header">
-      <a class="app-header__logo" href="/">Blog</a>
-
-        <!-- Sidebar toggle button-->
-        <a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a>
-        <!-- Navbar Right Menu-->
-        <ul class="app-nav">
-          <li class="app-search">
-            <input class="app-search__input" type="search" placeholder="Search">
-              <button class="app-search__button">
-                <i class="fa fa-search"></i>
-              </button>
-          </li>
-          <li>
-            <a class="dropdown-item" >
-              <i class="fa fa-user fa-lg"></i><br> Profile</a>
-          </li>
-          <li>
-            <a class="dropdown-item" href="page-login.html">
-              <i class="fa fa-sign-out fa-lg"></i></a>
-              <%= link_to "Log Out", destroy_user_session_path,class:"dropdown-item" %>
-
-          </li>
-          
+  <body class="sb-nav-fixed">
+    <nav class="sb-topnav navbar navbar-expand navbar-dark ">
+        <!-- Navbar Brand-->
+        <h1><a class="navbar-brand ps-3" href="/">Admin Pannel</a></h1>
+        <!-- Sidebar Toggle-->
+        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+        <!-- Navbar Search-->
+        <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+            <div class="input-group">
+                <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+                <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
+            </div>
+        </form>
+        <!-- Navbar-->
+        <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="#!">Settings</a></li>
+                    <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+                    <li><hr class="dropdown-divider" /></li>
+                    <li><a class="dropdown-item" > <%= link_to "Log Out", destroy_user_session_path,class:"dropdown-item" %></a></li>
+                </ul>
+            </li>
         </ul>
-    </header>
+    </nav>
+        <div id="layoutSidenav">
+          <%= yield %>
+        </div>
+         
+               
+                
+    
 
-   
-      <div >
-       <%= yield %>      
-    </div>
-  </body>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="js/scripts.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+        <script src="assets/demo/chart-area-demo.js"></script>
+         <%= javascript_pack_tag 'chart-area-demo', 'data-turbolinks-track': 'reload' %>
+          <%= javascript_pack_tag 'chart-bar-demo', 'data-turbolinks-track': 'reload' %>
+        <script src="assets/demo/chart-bar-demo.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+        <script src="js/datatables-simple-demo.js"></script>
+    </body>
   </html>
