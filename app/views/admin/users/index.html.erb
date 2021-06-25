@@ -1,46 +1,21 @@
 <p id="notice"><%= notice %></p>
-<%= render 'sidebar' %>
-  <main class="app-content">
-    <div class="app-title">
-      <div>
-        <h1>
-          <i class="fa fa-dashboard"></i> Users
-          <hr>
-        </h1>
-        <p><%= link_to 'Create New User',  new_admin_user_path , class:"btn btn-primary icon-btn"%>
-        </p>   
+<h2> All users</h2>
+<br>
+<div class="container">
+  <div class="row">
+    <% @users.each do |user| %>
+      <div class="col-md-4">
+        <div class="card"> 
+          <div class="card-body">
+            <h3><%= user.name %></h3>
+            <br>
+              <%= link_to 'Show', admin_user_path(user) ,class: "btn btn-outline-primary" %>
+              <%= link_to 'Edit', edit_admin_user_path(user) ,class: "btn btn-outline-secondary"  %>
+              <%= link_to 'Destroy', admin_user_path(user), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-danger"  %>          
+          </div>        
+        </div><hr>
       </div>
-      <ul class="app-breadcrumb breadcrumb">
-        <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-        <li class="breadcrumb-item"><a >Users</a></li>
-      </ul>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="tile">
-          <h3 class="tile-title"> Users </h3>
-            <table class="table table-hover table-bordered">
-              <thead>
-                <tr>
-                  <th>Sr.No</th>
-                  <th>Body</th>
-               
-                </tr>
-              </thead>
-              <tbody>
-                <% @users.each do |user| %>
-                  <tr>
-                    <td><%= user.id %></td>
-                    <td><%= user.name%></td>
-                    <td><%= link_to 'Show', admin_user_path(user) ,class: "btn btn-outline-primary" %>
-                    </td>
-                    <td><%= link_to 'Edit', edit_admin_user_path(user),class: "btn btn-outline-secondary"   %></td>
-                    <td> <%= link_to 'Destroy', admin_user_path(user), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-danger"  %>  </td>
-                  </tr>
-                <% end %>
-              </tbody>
-            </table>     
-        </div>
-      </div>
-    </div>
-  </main>
+    <% end %>  
+  </div>  
+</div>
+<br>
