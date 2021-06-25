@@ -28,30 +28,53 @@
 }
 
 .navbar{
-  background-color:#253055;
+  background-image: url("bg.jpeg");
+  background-size:cover;
+  background-repeat:no-repeat;
   padding:1rem;
+  height:200px;
   a{
-    color: white;
+    color: blue;
   }
   h1{
-    color:#fff;
+    color:blue;
     margin-left:2rem;
+
   }
   li{ 
     margin: 1rem 1rem;
-    border-bottom:1px solid silver;
+  
   }
 
 }
 
+ul{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+li{ 
+  margin: 1rem 1.5rem;
+  
+}
+#button-style-blog{
+  border:none;
+  border-radius:10px;
+  position:absolute;
+  margin-left:35%;
+  padding:20px
+}
+
+#button-style-admin{
+  border:none;
+  font-size: 25px;
+  border-radius:10px;
+}
+
 .main{
-  margin: 0rem 1.8rem;
-  @media (max-width: 992px){
-    margin: 0rem 1rem;  
-  }
-  @media(max-width:768px){
-    margin: 0rem 1rem;    
-  }
+  background-image :linear-gradient(to right,#D3CCE3,#E9E4F0);
+  padding-top:2px;
+
 }
 
 .blogsection{
@@ -133,7 +156,7 @@
   border-radius: 5px;
   background-color: #fff;
   border: 1px solid  #c5c5cb ;
-  box-shadow: 1px 1px 3px 2px #d5d5da;
+  
   @media(max-width:798px){
     display:none;
   }
@@ -158,9 +181,10 @@ button{
 .recentpost{
   margin-top: 30px;
   padding: 15px 0px 16px ;
+  background-color: #fff;
   border-radius: 5px;
   border: 1px solid  #c5c5cb ;
-  box-shadow: 1px 1px 3px 2px #d5d5da;
+  
   @media(max-width:798px){
     width:50%;
     margin:10px;
@@ -182,23 +206,16 @@ h6{
   margin-top: 30px;
   padding: 15px 0px 16px ;
   border-radius: 5px;
+  background-color: #fff;
   border: 1px solid  #c5c5cb ;
-  box-shadow: 1px 1px 3px 2px #d5d5da;
+
   @media(max-width:798px){
     width:50%;
     margin:10px;
   }
 } 
 
-ul{
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-li{ 
-  margin: 1rem 1.5rem;
-  border-bottom:1px solid silver;
-}
+
 
 .badge{
   background:#253055;
@@ -211,7 +228,10 @@ li{
 }
 
 .showblog{
-  margin: 0rem 3rem;  
+  padding: 15px 0px 16px ;
+  border-radius: 20px;
+  background-color: #fff;
+  border: 1px solid  #c5c5cb ;  
 }
 
 img{
@@ -352,6 +372,13 @@ span{
   margin-bottom:5px;
 }
 
+#comment-form{
+  height:50px;
+  overflow:scroll;
+}
+#comment-form-button{
+  float:left;
+}
 
 
 

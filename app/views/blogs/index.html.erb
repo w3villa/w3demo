@@ -1,12 +1,13 @@
 <p id="notice"><%= notice %></p>
 <div class="bloglist">
+
   <div class="left">
     <div class="row">
       <% @blogs.each do |blog| %>
         <div class="col-md-6">
           <div class="card">
             <div>
-              <%= image_tag(blog.image , style: "height:100%; width:100%;") if blog.image.present?  %> 
+              <%= image_tag(blog.image ,height:"250px;", width:"250px;") if blog.image.present?  %> 
             </div>
               <span><i class="fa fa-list-alt icon" aria-hidden="true"></i>
                 <%= blog.category.try(:name) %></span>
@@ -33,10 +34,11 @@
       <% end %>
     </div>
     <%= link_to 'New Blog', new_blog_path, class:"newbutton"  %> 
+
   </div>
   <div class="right">
     <div class="searchbox">
-      <input type="text" placeholder="Search" class="form-control input">
+      <p><input type="text" placeholder="Search" class="form-control input"></p>
       <button>Search</button> 
     </div>
     <div class="recentpost">
@@ -44,10 +46,10 @@
         <table>
           <tr>
             <td >
-              <%= image_tag("web.jpg",height:"50px;", width:"50px;") %>   
+              <%= image_tag(@blogs.last.image,height:"50px;", width:"80px;") %>   
             </td>
             <td>
-            Web development is the work involved in developing a Web site for the Internet 
+              <%= @blogs.last.title %>
             </td>
           <hr>
           </tr>
@@ -57,3 +59,4 @@
     <%= render partial: "tag", locals: {tags: @tags} %>
   </div>
 </div>
+<br>
