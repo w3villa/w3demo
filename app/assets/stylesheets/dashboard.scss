@@ -7,6 +7,14 @@
           box-sizing: border-box;
 }
 
+.navbar{
+  box-shadow: 0px 0px 5px grey;
+}  
+.navbar li{
+  margin: 20px;
+}
+
+
 html {
   font-family: sans-serif;
   line-height: 1.15;
@@ -379,13 +387,17 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
   color: #fff;
 }
 
-.app-menu__item.active, .app-menu__item:hover, .app-menu__item:focus {
-  background:  #0a83c0 ;
-
-  text-decoration: none;
-  color: #fff;
-  font-weight:800;
+.app-menu__item button{
+  width: 150px;
 }
+
+.app-menu__item  button:focus{
+     background-color: #8E2DE2;
+     padding: 10px;
+     color: white;
+
+}
+
 
 .app-menu__icon {
   -webkit-box-flex: 0;

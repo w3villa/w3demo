@@ -1,6 +1,5 @@
 class BlogTagsController < ApplicationController
   before_action :set_blog_tag, only: %i[ show edit update destroy ]
-  
 
   # GET /blog_tags or /blog_tags.json
   def index
